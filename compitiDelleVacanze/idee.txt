@@ -1,0 +1,8 @@
+-Sito curriculum/e-portfolio personale tipo
+-blog personale
+-gioco flauto, in base a come muovo la mano suono il flauto
+-lettore musicale ma con alzamento e abbassamento di volume con la mano, pausa con pugno
+-usare riconoscimento facciale per boh qualcosa di figo
+-gioco dei dischi tipo del bowling con porte e tutto ma comandato dal riconoscimento del movimento delle due mani (con pausa, menù, punti che si aggiornano, win o game over)
+-sito di ricerca di nazioni, città, paesi (con foto di cartine, info abitanti, superficie, link di google maps pure se riesco(la vedo dura))
+  ( https://portapipe.wordpress.com/2017/03/21/paesi-bandiere-base64-codici-e-valute-in-json/) (https://stefangabos.github.io/world_countries/)
