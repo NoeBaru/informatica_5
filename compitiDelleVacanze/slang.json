@@ -1,0 +1,266 @@
+[
+    {
+        "parola": "AF",
+        "significato": "Molto o estremamente (abbreviazione di 'as fuck')",
+        "esempio": "Sono stanco AF dopo quella corsa.",
+        "foto": "https://example.com/af.jpg"
+    },
+    {
+        "parola": "Bae",
+        "significato": "Un termine affettuoso per il partner",
+        "esempio": "Sto andando a cena con il mio bae stasera.",
+        "foto": "https://example.com/bae.jpg"
+    },
+    {
+        "parola": "Basito",
+        "significato": "Essere estremamente sorpresi o increduli",
+        "esempio": "Sono rimasto basito dalla notizia.",
+        "foto": "https://example.com/basito.jpg"
+    },
+    {
+        "parola": "Bruh",
+        "significato": "Un'esclamazione di sorpresa o incredulità",
+        "esempio": "Bruh, davvero hai fatto quello?",
+        "foto": "https://example.com/bruh.jpg"
+    },
+    {
+        "parola": "Bussin",
+        "significato": "Qualcosa di eccezionalmente buono o delizioso",
+        "esempio": "Questa pizza è davvero bussin.",
+        "foto": "https://example.com/bussin.jpg"
+    },
+    {
+        "parola": "Cap",
+        "significato": "Mentire o dire una bugia",
+        "esempio": "Non credo a quello che dice, è tutto cap.",
+        "foto": "https://example.com/cap.jpg"
+    },
+    {
+        "parola": "Chillare",
+        "significato": "Rilassarsi o passare il tempo in modo tranquillo",
+        "esempio": "Stasera voglio solo chillare a casa.",
+        "foto": "https://example.com/chillare.jpg"
+    },
+    {
+        "parola": "Clout",
+        "significato": "Influenza o popolarità, specialmente sui social media",
+        "esempio": "Sta facendo tutto per il clout.",
+        "foto": "https://example.com/clout.jpg"
+    },
+    {
+        "parola": "Cissi",
+        "significato": "Qualcosa di insignificante o di poco valore",
+        "esempio": "Non preoccuparti di quel problema, è solo una cissi.",
+        "foto": "https://example.com/cissi.jpg"
+    },
+    {
+        "parola": "Cringe",
+        "significato": "Qualcosa di imbarazzante o che provoca disagio",
+        "esempio": "Il suo discorso era così cringe che tutti si sono sentiti a disagio.",
+        "foto": "https://example.com/cringe.jpg"
+    },
+    {
+        "parola": "Dissare",
+        "significato": "Criticare o attaccare verbalmente qualcuno, spesso in contesti musicali o sui social media",
+        "esempio": "Ha scritto una nuova canzone per dissare i suoi rivali.",
+        "foto": "https://example.com/dissare.jpg"
+    },    
+    {
+        "parola": "Droppare",
+        "significato": "Rilasciare o pubblicare qualcosa, spesso musica o prodotti",
+        "esempio": "Ha appena droppato il suo nuovo album.",
+        "foto": "https://example.com/droppare.jpg"
+    },
+    {
+        "parola": "Fam",
+        "significato": "Amici stretti considerati come famiglia",
+        "esempio": "Andiamo al parco, fam.",
+        "foto": "https://example.com/fam.jpg"
+    },
+    {
+        "parola": "Fire",
+        "significato": "Qualcosa di molto bello o eccitante",
+        "esempio": "Quella canzone è davvero fire.",
+        "foto": "https://example.com/fire.jpg"
+    },
+    {
+        "parola": "Flexare",
+        "significato": "Mostrare con orgoglio i propri beni o successi",
+        "esempio": "Sta sempre flexando il suo nuovo orologio costoso.",
+        "foto": "https://example.com/flexare.jpg"
+    },
+    {
+        "parola": "Flexxare",
+        "significato": "Variante di 'flexare', mostrare con orgoglio i propri beni o successi",
+        "esempio": "Ama flexxare la sua nuova macchina.",
+        "foto": "https://example.com/flexxare.jpg"
+    },
+    {
+        "parola": "FOMO",
+        "significato": "Paura di perdere un evento o un'esperienza",
+        "esempio": "Non posso mancare, ho un terribile FOMO.",
+        "foto": "https://example.com/fomo.jpg"
+    },
+    {
+        "parola": "Ghostare",
+        "significato": "Sparire improvvisamente da qualcuno senza spiegazioni",
+        "esempio": "Mi ha ghostato dopo il nostro primo appuntamento.",
+        "foto": "https://example.com/ghostare.jpg"
+    },
+    {
+        "parola": "Glow up",
+        "significato": "Miglioramento notevole nell'aspetto o nello stile di vita",
+        "esempio": "Dopo il liceo ha avuto un grande glow up.",
+        "foto": "https://example.com/glowup.jpg"
+    },
+    {
+        "parola": "Highkey",
+        "significato": "Aperto, evidente o non nascosto",
+        "esempio": "Highkey voglio andare a quella festa.",
+        "foto": "https://example.com/highkey.jpg"
+    },
+    {
+        "parola": "Hittare",
+        "significato": "Riuscire a ottenere qualcosa o raggiungere un obiettivo",
+        "esempio": "Ha hittato tutti i suoi obiettivi quest'anno.",
+        "foto": "https://example.com/hittare.jpg"
+    },
+    {
+        "parola": "Hoe",
+        "significato": "Termine dispregiativo usato per descrivere una persona considerata promiscua",
+        "esempio": "Non fare caso a quello che dice, è solo una hoe.",
+        "foto": "https://example.com/hoe.jpg"
+    },    
+    {
+        "parola": "Hype",
+        "significato": "Grande eccitazione o aspettativa riguardo qualcosa",
+        "esempio": "C'è molto hype per il nuovo film.",
+        "foto": "https://example.com/hype.jpg"
+    },
+    {
+        "parola": "JOMO",
+        "significato": "Gioia nel perdere un evento, opposto di FOMO",
+        "esempio": "Stasera resterò a casa, pura JOMO.",
+        "foto": "https://example.com/jomo.jpg"
+    },
+    {
+        "parola": "Killare",
+        "significato": "Sconfiggere o eliminare qualcuno, spesso usato nei videogiochi",
+        "esempio": "Ho killato tutti gli avversari nel gioco.",
+        "foto": "https://example.com/killare.jpg"
+    },    
+    {
+        "parola": "Lit",
+        "significato": "Qualcosa di molto eccitante o divertente",
+        "esempio": "La festa di ieri sera era davvero lit!",
+        "foto": "https://example.com/lit.jpg"
+    },
+    {
+        "parola": "Lowkey",
+        "significato": "Non apertamente, in segreto o in modo tranquillo",
+        "esempio": "Mi piace lowkey quel tipo di musica.",
+        "foto": "https://example.com/lowkey.jpg"
+    },
+    {
+        "parola": "Mood",
+        "significato": "Una parola usata per esprimere empatia verso una situazione",
+        "esempio": "Dormire tutto il giorno è il mio mood attuale.",
+        "foto": "https://example.com/mood.jpg"
+    },
+    {
+        "parola": "No cap",
+        "significato": "Usato per dire che qualcosa è vero e non una bugia",
+        "esempio": "Quel concerto era incredibile, no cap.",
+        "foto": "https://example.com/nocap.jpg"
+    },
+    {
+        "parola": "On fire",
+        "significato": "Essere in uno stato di grande successo o eccellenza",
+        "esempio": "Sta segnando in tutte le partite, è davvero on fire!",
+        "foto": "https://example.com/onfire.jpg"
+    },
+    {
+        "parola": "Prankare",
+        "significato": "Fare uno scherzo a qualcuno",
+        "esempio": "Abbiamo prankato il nostro amico durante la festa.",
+        "foto": "https://example.com/prankare.jpg"
+    },    
+    {
+        "parola": "Rece",
+        "significato": "Ricevuta di un pagamento",
+        "esempio": "Ho bisogno del rece per il rimborso.",
+        "foto": "https://example.com/rece.jpg"
+    },
+    {
+        "parola": "Salty",
+        "significato": "Essere arrabbiati o infastiditi per qualcosa",
+        "esempio": "È ancora salty per aver perso quella partita.",
+        "foto": "https://example.com/salty.jpg"
+    },
+    {
+        "parola": "Savage",
+        "significato": "Qualcosa di estremamente audace o senza scrupoli",
+        "esempio": "Quella battuta era davvero savage.",
+        "foto": "https://example.com/savage.jpg"
+    },
+    {
+        "parola": "Shade",
+        "significato": "Insinuazione o critica velata",
+        "esempio": "Ha lanciato una shade pesante nel suo discorso.",
+        "foto": "https://example.com/shade.jpg"
+    },
+    {
+        "parola": "Shook",
+        "significato": "Essere sorpresi o sconvolti",
+        "esempio": "Era completamente shook dopo aver sentito la notizia.",
+        "foto": "https://example.com/shook.jpg"
+    },
+    {
+        "parola": "Simp",
+        "significato": "Una persona che è eccessivamente servile o adulante verso qualcun altro",
+        "esempio": "Sta facendo tutto per lei, è un vero simp.",
+        "foto": "https://example.com/simp.jpg"
+    },
+    {
+        "parola": "Slay",
+        "significato": "Fare qualcosa in modo eccellente o dominare",
+        "esempio": "Hai slayato quella presentazione!",
+        "foto": "https://example.com/slay.jpg"
+    },
+    {
+        "parola": "Swole",
+        "significato": "Essere molto muscolosi o in forma",
+        "esempio": "Dopo mesi in palestra è diventato swole.",
+        "foto": "https://example.com/swole.jpg"
+    },
+    {
+        "parola": "Stan",
+        "significato": "Essere un fan ossessionato di qualcuno",
+        "esempio": "Lei stana completamente quel cantante.",
+        "foto": "https://example.com/stan.jpg"
+    },
+    {
+        "parola": "Swag",
+        "significato": "Stile, atteggiamento o presenza di grande fiducia e coolness",
+        "esempio": "Ha un sacco di swag con quei vestiti.",
+        "foto": "https://example.com/swag.jpg"
+    },
+    {
+        "parola": "Thirsty",
+        "significato": "Desiderare disperatamente attenzione o affetto",
+        "esempio": "Sta postando tutte quelle foto solo per sembrare thirsty.",
+        "foto": "https://example.com/thirsty.jpg"
+    },
+    {
+        "parola": "Woke",
+        "significato": "Essere consapevoli e informati su questioni sociali e politiche",
+        "esempio": "Lei è molto woke riguardo ai diritti civili.",
+        "foto": "https://example.com/woke.jpg"
+    },
+    {
+        "parola": "Yeet",
+        "significato": "Lanciare qualcosa con forza",
+        "esempio": "Ha yeetato la palla dall'altra parte del campo.",
+        "foto": "https://example.com/yeet.jpg"
+    }
+]
