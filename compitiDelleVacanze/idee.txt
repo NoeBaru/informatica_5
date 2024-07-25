@@ -6,3 +6,5 @@
 -gioco dei dischi tipo del bowling con porte e tutto ma comandato dal riconoscimento del movimento delle due mani (con pausa, menù, punti che si aggiornano, win o game over)
 -sito di ricerca di nazioni, città, paesi (con foto di cartine, info abitanti, superficie, link di google maps pure se riesco(la vedo dura))
   ( https://portapipe.wordpress.com/2017/03/21/paesi-bandiere-base64-codici-e-valute-in-json/) (https://stefangabos.github.io/world_countries/)
+- sito dizionario (con tema chiaro o scuro sceglibile) degli slang giovanili con parola, significato, esempi (se riesco pure audio in cui leggo ciò) e annessa foto esplicativa (se esiste,
+  altrimenti la creo con l'AI.
