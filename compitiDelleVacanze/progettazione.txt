@@ -1,0 +1,4 @@
+SLANGario logo
+SLANGario breve descrizione nella home page
+barra di ricerca
+menù a discesa con mouse hover: HOME, CERCA, CONTATTACI (EMAIL, WHATSAPP, ACCOUNT INSTAGRAM E TIK TOK)
