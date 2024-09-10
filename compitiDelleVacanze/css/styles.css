@@ -1,0 +1,256 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: fantasy, Arial, sans-serif;
+    box-sizing: border-box;
+}
+html{
+    min-height: 100%;
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+}
+.banner{
+    flex-grow: 1;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0,0,0,0.36)), url(../img/sfondoWhite.png);
+    background-size: cover;
+    background-position: center;
+    padding: 20px 0;
+}
+.navbar{
+    width: 90%;
+    margin: auto;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 25px;
+    position: relative;
+    z-index: 10;
+}
+.logo{
+    width: 200px;
+    cursor: pointer;
+}
+.navbar ul li{
+    list-style:none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #fe0000;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+.navbar ul li:hover::after{
+    width: 100%;
+}
+.content {
+    flex-grow: 1;
+    width: 80%;
+    position: relative;
+    top: 0;
+    text-align: left;
+    color: white;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 150px;
+    min-height: 600px; /* Altezza minima per allungare la pagina */
+}
+.content h1{
+    color: rgb(7, 218, 255);
+    font-size: 90px;
+    margin-top: 30px;
+}
+.content h2{
+    color: rgb(7, 218, 255);
+    font-size: 70px;
+    margin-top: 40px;
+}
+.content h3{
+    margin: 20px 0;
+    font-size: 30px;
+    font-weight: 100;
+    line-height: 30px;
+    color: #fe9800;
+    font-family: fantasy, Arial, sans-serif;
+}
+.content h4{
+    margin: 20px auto;
+    font-size: 25px;
+    font-weight: 100;
+    line-height: 30px;
+    color: white;
+}
+.content p{
+    margin: 20px auto;
+    font-size: 25px;
+    font-weight: 100;
+    line-height: 30px;
+    color: white;
+}
+content p a:link{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+content p a:visited{
+    color: rgb(255, 255, 255);
+}
+content p a:hover{
+    color: rgb(255, 132, 0);
+}
+a {
+    color: #fe9800; 
+    text-decoration: none; 
+}
+a:visited {
+    color: #fe9800;  
+}
+a:hover {
+    color: white; 
+    text-decoration: underline;  
+}
+a:active {
+    color: white;
+}
+button{
+    width: 200px;
+    font-size: 25px;
+    padding: 20px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    border: 2px solid #fe9800;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+span{
+    background: #fe9800;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+button:hover span{
+    width: 100%;
+}
+button:hover{
+    background-color: #fe9800;
+}
+button a {
+    color: white;              
+    text-decoration: none;    
+}
+button a:visited {
+    color: white;              
+}
+
+.form_newsletter {
+    width: 100%;
+}
+.form_newsletter form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 0;
+}
+.form_group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: left;
+}
+.form_group label {
+    flex: 1;
+    margin-right: 10px;
+}
+.form_group input[type="text"],
+.form_group input[type="date"],
+.form_group input[type="range"] {
+    flex: 2;
+}
+.form_buttons {
+    text-align: center;
+}
+.search-bar{
+    width: 1000;
+    padding: 10px 15px;
+    border: 2px solid #cccccc;
+    border-radius: 25px 25px 25px 25px;
+    font-size: 25px;
+    outline: none;
+    color: rgb(255, 132, 0);
+}
+footer{
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: #262626;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+#footer_title{
+    font: 140% Arial, sans-serif;
+}
+#footer_title a:link{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+#footer_title a:visited{
+    color: rgb(255, 255, 255);
+}
+#footer_title a:hover{
+    color: red;
+}
+#footer_title{
+    text-align: center;
+}
+#risultati {
+    margin-top: 20px;
+    color: white;
+    min-height: 200px;
+}
+.icon {
+    width: 20px; 
+    vertical-align: middle;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.icon_search{
+    width: 20px; 
+    vertical-align: middle;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border: 2px solid #cccccc;
+    border-radius: 25px;
+    font-size: 25px;
+    outline: none;
+    color: rgb(255, 132, 0);
+}

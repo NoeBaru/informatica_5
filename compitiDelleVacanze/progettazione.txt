@@ -1,4 +1,6 @@
-SLANGario logo
-SLANGario breve descrizione nella home page
-barra di ricerca
-menù a discesa con mouse hover: HOME, CERCA, CONTATTACI (EMAIL, WHATSAPP, ACCOUNT INSTAGRAM E TIK TOK)
+barra di ricerca per nome o iniziale
+menù con mouse hover: HOME, CONTATTACI (EMAIL, WHATSAPP, ACCOUNT INSTAGRAM E TIK TOK),
+                      RICHIESTE (poter scrivere nuove parole da far aggiungere al sito), ISCRIVITI (form con dati da inserire)
+il logo deve essere cliccabile e ingrandibile (se riesco usando il codice in prova.html css e js)
+Footer con aggiunta di logo itis, logo slangario, mia foto con felpa itis
+mettere i link cliccati di colore non scuro e mettese mouse hover

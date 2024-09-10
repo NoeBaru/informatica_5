@@ -1,61 +1,40 @@
-<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SLANGario</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css"> <!--Collega il file CSS esterno per lo stile della pagina-->
 </head>
 <body>
-    <div class="theme-toggle">
-        <button id="theme-toggle-button">
-            <span id="theme-icon" class="moon-icon">&#9790;</span> <!--Luna nera da cliccare per passare al tema scuro di default
-        </button>
+    <div class="banner">
+        <div class="navbar"> <!--Menu di navigazione con logo e i link ad altre pagine del sito-->
+            <img src="img/slangarioLogoPNG2.png" class="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pag/cerca.html">Cerca</a></li>
+                <li><a href="pag/contattaci.html">Contattaci</a></li>
+                <li><a href="pag/richieste.html">Richieste</a></li>
+                <li><a href="pag/iscriviti.html">Iscriviti</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>SLANGario</h1>
+            <p>Questo è il sito dove puoi cercare gli slang, le parole usate al giorno d'oggi dai giovani.
+            <br>Qui troverai: definizioni, significati ed esempi.<br>
+            <br>Scegli se cercare uno slang o richiedere l'inserimento di un termine non ancora presente</p>
+            <div>
+                <button type="button"><span></span><a href= "pag/cerca.html" target="_blank">CERCA</a></button>
+                <button type="button"><span></span><a href= "pag/richieste.html" target="_blank">RICHIESTA</a></button>
+            </div>                    
+        </div>
     </div>
-    <h1><b>SLANGario</b></h1>
-    <p>Questo è il sito dello SLANGario, dove puoi cercare gli slang e le parole usate dai giovani e troverai definizioni,
-        significati, esempi e foto esplicativde.</p>
-    <script src="script.js"></script>
-</body>
-</html>-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Impostazioni di base del documento HTML -->
-    <meta charset="UTF-8"> <!-- Definisce la codifica dei caratteri come UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Imposta la viewport per la responsività -->
-    <title>cognome_Campionato_1</title> <!-- Titolo della pagina -->
-</head>
-<body>
-    <h1 id="title"></h1> <!-- Header per il titolo del campionato -->
-    <select name="squadra" id="selSquad"> <!-- Dropdown per la selezione della squadra -->
-        <option value=""></option> <!-- Opzione vuota iniziale -->
-    </select>
-    
-    <script>
-        // Collegamenti agli elementi del DOM
-        let title = document.getElementById("title");
-        let selezione = document.getElementById("selSquad");
-        
-        // URL dei file JSON da cui recuperare i dati
-        let url = "./campionato20_21.json";
-        let url2 = "./squadre20_21.json";
-        
-        // Fetch per ottenere i dati delle squadre
-        fetch(url2)
-            .then(response => response.json()) // Converti la risposta in JSON
-            .then(dati => {
-                const datiJson = dati; // Salva i dati JSON
-                console.log(datiJson); // Stampa i dati JSON nella console
-
-                title.innerHTML = "CAMPIONATO: " + datiJson.name; // Imposta il titolo del campionato
-                datiJson.clubs.forEach(element => {
-                    console.log(element); // Stampa i dettagli del club nella console
-                    console.log("<option value=" + element.code + ">" + element.name + "</option>"); // Stampa l'HTML generato per l'opzione
-                    // Aggiungi ogni squadra al dropdown
-                    selezione.innerHTML += "<option value=" + element.code + ">" + element.name + "</option>";
-                });
-            });
-    </script>
+    <footer><!--Footer con informazioni di contatto-->
+        <div id="footer_title">
+            <p>Scrivi per informazioni a <a href="mailto: noemi.baruffolo@itiscuneo.eu"> noemi.baruffolo@itiscuneo.eu</a></h3>
+                <br><a href="mailto: 5AROB.alunni@itiscuneo.eu">5^ AROB</a>
+                <br><a href="mailto: noemi.baruffolo@itiscuneo.eu">Noemi Baruffolo</a>
+				<br><a href="https://www.itiscuneo.edu.it/"> ITIS Mario Delpozzo</a></p>
+            </div>
+    </footer>
 </body>
 </html>

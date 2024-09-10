@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLANGario</title>
+    <link rel="stylesheet" href="../css/styles.css"><!--Collegamento al file CSS esterno per lo stile-->
+</head>
+    <body>
+        <div class="banner">
+            <div class="navbar"><!--Menu di navigazione con logo e i link ad altre pagine del sito-->
+                <img src="../img/slangarioLogoPNG2.png" class="logo">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../pag/cerca.html">Cerca</a></li>
+                    <li><a href="../pag/contattaci.html">Contattaci</a></li>
+                    <li><a href="../pag/richieste.html">Richieste</a></li>
+                    <li><a href="../pag/iscriviti.html">Iscriviti</a></li>
+                </ul>
+            </div>
+            <div class="content">
+                <h2>CERCA</h2>
+                <!--Barra di ricerca e bottone per cercare slang-->
+                <p>
+                    <input type="text" id="search-bar" class="search-bar" placeholder="Scrivi qui lo slang che vuoi cercare...">
+                    <button onclick="cercaSlang()"><img src="../img/search.png" alt="Search" class="icon_search"></button>
+                </p>
+                <div id="risultati"></div>                    
+            </div>
+        </div>
+        <footer><!--Footer con informazioni di contatto-->
+            <div id="footer_title">
+                <p>Scrivi per informazioni a <a href="mailto: noemi.baruffolo@itiscuneo.eu"> noemi.baruffolo@itiscuneo.eu</a></h3>
+                    <br><a href="mailto: 5AROB.alunni@itiscuneo.eu">5^ AROB</a>
+                    <br><a href="mailto: noemi.baruffolo@itiscuneo.eu">Noemi Baruffolo</a>
+                    <br><a href="https://www.itiscuneo.edu.it/"> ITIS Mario Delpozzo</a></p>
+                </div>
+        </footer>
+        <script>
+            let slangData = [];
+        
+            //Carica i dati dal file slang.json
+            fetch('../slang.json')
+                .then(response => response.json())
+                .then(data => {
+                    slangData = data;
+                })
+                .catch(error => console.error('Errore nel caricamento del file JSON:', error));
+        
+           //Funzione per cercare lo slang
+            function cercaSlang() {
+                //Ottiene il valore inserito dall'utente
+                const input = document.getElementById('search-bar').value.toLowerCase();
+                
+                //Cerca lo slang nel JSON
+                const risultato = slangData.find(slang => slang.parola.toLowerCase() === input);
+                
+                //Se è stato trovato uno slang, lo mostra
+                if (risultato) {
+                    document.getElementById('risultati').innerHTML = `
+                        <h4>Risultato della ricerca:</h4>
+                        <p><h3>Parola:</h3> <h4>${risultato.parola}</h4></p>
+                        <p><h3>Significato:</h3> <h4>${risultato.significato}</h4></p>
+                        <p><h3>Esempio:</h3> <h4>${risultato.esempio}</h4></p>
+                    `;
+                } else {
+                    //Se lo slang non è stato trovato avverte
+                    document.getElementById('risultati').innerHTML = '<p>Slang non trovato.</p>';
+                }
+            }
+        </script>        
+    </body>
+</html>
