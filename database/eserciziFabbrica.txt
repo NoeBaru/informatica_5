@@ -1,0 +1,74 @@
+/////////////////////////
+ESERCIZI FABBRICA (N.3,4,5,10,12,13,14,15)
+/////////////////////////
+
+ES3
+
+SELECT *
+FROM sedeA
+WHERE codOperaio = 'PLFR';
+
+UPDATE sedeA
+SET codR = 3
+WHERE codOperaio = 'PLFR';
+
+/////////
+
+ES4
+
+SELECT *
+FROM responsabili
+WHERE codResp = 1;
+
+DELETE FROM responsabili
+WHERE (1, 'Lerda', 'Ivo');
+
+//////////
+
+ES5
+
+SELECT *
+FROM sedeA
+WHERE codR = 1;
+
+UPDATE sedeA
+SET stipendio = stipendio + 30
+WHERE codR = 1;
+
+///////////
+
+ES10
+SELECT *
+FROM sedeA
+WHERE codR = 1;
+
+///////////
+
+ES12
+
+SELECT *
+FROM sedeB
+WHERE stipendio < 900;
+
+////////////
+
+ES13
+SELECT stipendio
+FROM sedeB
+WHERE sesso = 'M';
+
+
+////////////
+
+ES14
+
+SELECT codR
+FROM sedeA;
+
+
+/////////////
+
+ES15
+
+SELECT codR, codOperaio
+FROM sedeB

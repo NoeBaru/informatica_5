@@ -1,26 +1,35 @@
-*{
+/* Imposta i margini e i padding a 0 per tutti gli elementi, usa un font fantasy con fallback su Arial o sans-serif, e applica il box-sizing al bordo */
+* {
     margin: 0;
     padding: 0;
     font-family: fantasy, Arial, sans-serif;
     box-sizing: border-box;
 }
-html{
+
+/* Imposta un'altezza minima del 100% per l'elemento html */
+html {
     min-height: 100%;
 }
+
+/* Il corpo della pagina e' un contenitore flessibile con altezza minima 100vh per coprire l'intero schermo e con una disposizione a colonna */
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     margin: 0;
 }
-.banner{
+
+/* Banner con un'immagine di sfondo che si estende a tutta l'area e una leggera sovrapposizione di trasparenza */
+.banner {
     flex-grow: 1;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0,0,0,0.36)), url(../img/sfondoWhite.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)), url(../img/sfondoWhite.png);
     background-size: cover;
     background-position: center;
     padding: 20px 0;
 }
-.navbar{
+
+/* Navbar con layout flessibile, centrata, e con una spaziatura tra gli elementi */
+.navbar {
     width: 90%;
     margin: auto;
     padding: 20px 0;
@@ -31,22 +40,30 @@ body {
     position: relative;
     z-index: 10;
 }
-.logo{
+
+/* Imposta la larghezza del logo e lo rende cliccabile */
+.logo {
     width: 200px;
     cursor: pointer;
 }
-.navbar ul li{
-    list-style:none;
+
+/* Lista di navigazione con elementi visualizzati in linea */
+.navbar ul li {
+    list-style: none;
     display: inline-block;
     margin: 0 20px;
     position: relative;
 }
-.navbar ul li a{
+
+/* Stile per i link nella navbar: testo bianco e tutto maiuscolo */
+.navbar ul li a {
     text-decoration: none;
     color: #ffffff;
     text-transform: uppercase;
 }
-.navbar ul li::after{
+
+/* Linea decorativa sotto ogni link, che si espande al passaggio del mouse */
+.navbar ul li::after {
     content: '';
     height: 3px;
     width: 0;
@@ -56,9 +73,13 @@ body {
     bottom: -10px;
     transition: 0.5s;
 }
-.navbar ul li:hover::after{
+
+/* Al passaggio del mouse, la linea sotto il link si estende completamente */
+.navbar ul li:hover::after {
     width: 100%;
 }
+
+/* Contenuto principale della pagina con layout flessibile, centrato e con padding */
 .content {
     flex-grow: 1;
     width: 80%;
@@ -71,17 +92,23 @@ body {
     padding-bottom: 150px;
     min-height: 600px; /* Altezza minima per allungare la pagina */
 }
-.content h1{
+
+/* Titolo di primo livello con colore e dimensioni specifici */
+.content h1 {
     color: rgb(7, 218, 255);
     font-size: 90px;
     margin-top: 30px;
 }
-.content h2{
+
+/* Titolo di secondo livello con stile simile all'h1 */
+.content h2 {
     color: rgb(7, 218, 255);
     font-size: 70px;
     margin-top: 40px;
 }
-.content h3{
+
+/* Titolo di terzo livello con stile leggero e colore arancione */
+.content h3 {
     margin: 20px 0;
     font-size: 30px;
     font-weight: 100;
@@ -89,45 +116,65 @@ body {
     color: #fe9800;
     font-family: fantasy, Arial, sans-serif;
 }
-.content h4{
+
+/* Titolo di quarto livello, bianco e con line-height regolato */
+.content h4 {
     margin: 20px auto;
     font-size: 25px;
     font-weight: 100;
     line-height: 30px;
     color: white;
 }
-.content p{
+
+/* Paragrafo bianco con dimensioni e stile del testo personalizzati */
+.content p {
     margin: 20px auto;
     font-size: 25px;
     font-weight: 100;
     line-height: 30px;
     color: white;
 }
-content p a:link{
+
+/* Stile per i link all'interno dei paragrafi */
+content p a:link {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
-content p a:visited{
+
+/* Colore dei link visitati */
+content p a:visited {
     color: rgb(255, 255, 255);
 }
-content p a:hover{
+
+/* Cambia colore dei link al passaggio del mouse */
+content p a:hover {
     color: rgb(255, 132, 0);
 }
+
+/* Stile base per i link */
 a {
-    color: #fe9800; 
-    text-decoration: none; 
+    color: #fe9800;
+    text-decoration: none;
 }
+
+/* Link visitato mantiene il colore arancione */
 a:visited {
-    color: #fe9800;  
+    color: #fe9800;
 }
+
+/* Al passaggio del mouse, il link diventa bianco e sottolineato */
 a:hover {
-    color: white; 
-    text-decoration: underline;  
+    color: white;
+    text-decoration: underline;
 }
+
+/* Cambia colore del link quando viene cliccato */
 a:active {
     color: white;
 }
-button{
+
+/* Stile per i bottoni: arancioni con bordo arrotondato e animazione al passaggio del mouse */
+button {
     width: 200px;
     font-size: 25px;
     padding: 20px 0;
@@ -141,7 +188,9 @@ button{
     position: relative;
     overflow: hidden;
 }
-span{
+
+/* Barra di colore arancione all'interno del bottone, espansione al passaggio del mouse */
+span {
     background: #fe9800;
     height: 100%;
     width: 0;
@@ -152,49 +201,70 @@ span{
     z-index: -1;
     transition: 0.5s;
 }
-button:hover span{
+
+/* Espande la barra arancione quando c'e' il passaggio del mouse sul bottone */
+button:hover span {
     width: 100%;
 }
-button:hover{
+
+/* Cambia lo sfondo del bottone al passaggio del mouse */
+button:hover {
     background-color: #fe9800;
 }
+
+/* Stile per i link all'interno dei bottoni */
 button a {
-    color: white;              
-    text-decoration: none;    
-}
-button a:visited {
-    color: white;              
+    color: white;
+    text-decoration: none;
 }
 
+/* Il link visitato all'interno del bottone mantiene il colore bianco */
+button a:visited {
+    color: white;
+}
+
+/* Stile per il modulo newsletter di iscrizione, impostato come 100% della larghezza */
 .form_newsletter {
     width: 100%;
 }
+
+/* Imposta il modulo in colonna e con una larghezza massima di 500px */
 .form_newsletter form {
     display: flex;
     flex-direction: column;
     max-width: 500px;
     margin: 0 0;
 }
+
+/* Stile per i gruppi di campi del form, con layout a colonne e margine inferiore */
 .form_group {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
     align-items: left;
 }
+
+/* Etichetta all'interno del gruppo form con margine destro */
 .form_group label {
     flex: 1;
     margin-right: 10px;
 }
+
+/* Stile per i campi di input di testo, data e range */
 .form_group input[type="text"],
 .form_group input[type="date"],
 .form_group input[type="range"] {
     flex: 2;
 }
+
+/* Allinea i bottoni del form al centro */
 .form_buttons {
     text-align: center;
 }
-.search-bar{
-    width: 1000;
+
+/* Barra di ricerca con padding, bordi arrotondati e stile specifico */
+.search-bar {
+    width: 100%;
     padding: 10px 15px;
     border: 2px solid #cccccc;
     border-radius: 25px 25px 25px 25px;
@@ -202,7 +272,9 @@ button a:visited {
     outline: none;
     color: rgb(255, 132, 0);
 }
-footer{
+
+/* Footer della pagina, centrato e con sfondo scuro */
+footer {
     width: 100%;
     text-align: center;
     color: white;
@@ -211,39 +283,57 @@ footer{
     position: relative;
     z-index: 1;
 }
-#footer_title{
+
+/* Titolo del footer con font specifico */
+#footer_title {
     font: 140% Arial, sans-serif;
 }
-#footer_title a:link{
+
+/* Stile per i link nel titolo del footer */
+#footer_title a:link {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
-#footer_title a:visited{
+
+/* Colore dei link visitati nel titolo del footer */
+#footer_title a:visited {
     color: rgb(255, 255, 255);
 }
-#footer_title a:hover{
+
+/* Cambia colore del link del titolo del footer quando c'e' il passaggio del mouse */
+#footer_title a:hover {
     color: red;
 }
-#footer_title{
+
+/* Testo centrato per il titolo del footer */
+#footer_title {
     text-align: center;
 }
+
+/* Sezione risultati con margine superiore e altezza minima */
 #risultati {
     margin-top: 20px;
     color: white;
     min-height: 200px;
 }
+
+/* Icona con larghezza specifica e margine */
 .icon {
-    width: 20px; 
+    width: 20px;
     vertical-align: middle;
     margin-right: 5px;
     cursor: pointer;
 }
-.icon_search{
-    width: 20px; 
+
+/* Icona di ricerca con stile simile */
+.icon_search {
+    width: 20px;
     vertical-align: middle;
     margin-right: 5px;
     cursor: pointer;
 }
+
+/* Barra di ricerca con larghezza massima e padding */
 .search-bar {
     width: 100%;
     max-width: 400px;

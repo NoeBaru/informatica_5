@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLANGario</title>
+    <link rel="stylesheet" href="../css/styles.css"><!--Collegamento al file CSS esterno per lo stile-->
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar"><!--Menu di navigazione con logo e i link ad altre pagine del sito-->
+            <img src="../img/slangarioLogoPNG2.png" class="logo">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pag/cerca.html">Cerca</a></li>
+                <li><a href="../pag/contattaci.html">Contattaci</a></li>
+                <li><a href="../pag/richieste.html">Richieste</a></li>
+                <li><a href="../pag/iscriviti.html">Iscriviti</a></li>
+            </ul>
+        </div>
+        <div class="content" id="content">
+            <h2>ISCRIVITI</h2>
+            <div class="form_newsletter"><!--Form per l'iscrizione alla newsletter-->
+                <form id="form-iscrizione" action="javascript:void(0);" method="post">
+                    <h3>RIMANI AGGIORNATO/A AI NUOVI SLANG</h3>
+
+                    <div class="form_group">
+                        <label for="nome">Inserisci il tuo nome:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+
+                    <div class="form_group">
+                        <label for="cognome">Inserisci il tuo cognome:</label>
+                        <input type="text" id="cognome" name="cognome" required>
+                    </div>
+
+                    <div class="form_group">
+                        <label for="data_nascita">Inserisci la tua data di nascita:</label>
+                        <input type="date" id="data_nascita" name="data_nascita" required>
+                    </div>
+
+                    <div class="form_group">
+                        <label>Cosa vorresti ricevere via email?</label>
+                        <div>
+                            <input type="radio" name="scelta" value="Yes" checked>Tutto<br>
+                            <input type="radio" name="scelta" value="No">Solo la pubblicazione di nuovi slang
+                        </div>
+                    </div>
+
+                    <div class="form_group">
+                        <label for="valutazione">Come valuteresti il nostro sito?</label>
+                        🤮<input type="range" id="valutazione" name="valutazione" min="1" max="5">🤩
+                    </div>
+
+                    <div class="form_buttons">
+                        <!-- Bottone "Cerca" con immagine -->
+                        <button type="submit" name="invia">
+                            Invia
+                            <img src="../img/invia.png" alt="invia" class="icon">
+                            <span></span>
+                        </button>
+                        
+                        <!-- Bottone "Spazzatura" con immagine -->
+                        <button type="reset" name="cancella">
+                            Cancella dati   
+                            <img src="../img/spazzatura.png" alt="Cancella" class="icon">
+                            <span></span>
+                        </button>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer><!--Footer con informazioni di contatto-->
+        <div id="footer_title">
+            <p>Scrivi per informazioni a <a href="mailto: noemi.baruffolo@itiscuneo.eu"> noemi.baruffolo@itiscuneo.eu</a></p>
+            <p><a href="mailto: 5AROB.alunni@itiscuneo.eu">5^ AROB</a></p>
+            <p><a href="mailto: noemi.baruffolo@itiscuneo.eu">Noemi Baruffolo</a></p>
+            <p><a href="https://www.itiscuneo.edu.it/"> ITIS Mario Delpozzo</a></p>
+        </div>
+    </footer>
+
+    <script>
+        //Gestisce l'invio del form per mostrare il messaggio di conferma
+        document.getElementById('form-iscrizione').addEventListener('submit', function(event) {
+            event.preventDefault();  //Impedisce il comportamento predefinito del form (impedise i che il form venga inviato automaticamente
+            //e che la pagina venga ricaricata, permettendo di gestire l'invio del form con il codice seguente)
+
+            //Sostituisce il contenuto della sezione con il messaggio di ringraziamento
+            document.getElementById('content').innerHTML = `
+                <h2>Ti ringraziamo per aver completato la procedura di iscrizione!</h2>
+                <p>Continua a visitare il sito selezionando una delle voci del menu o tornando a navigare su internet.</p>
+            `;
+        });
+    </script>
+</body>
+</html>

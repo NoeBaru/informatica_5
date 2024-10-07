@@ -1,0 +1,7 @@
+CRUD Create Read Update Delete
+
+fare sito con banner, logo, footer e home con tabella con tuttto
+Mettere casella di ricerca per: codice, tipo, nome, reparto, marca
+mettere pulsante di ricerca, nuovo, elimina, modifica (qt, prezzo), subtotali (quanti prodotti ho totali del reparto con il valore totale e la quantità totale),
+responsabile (avere numero e nome responsabile)
+

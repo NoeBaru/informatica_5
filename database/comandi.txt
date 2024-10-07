@@ -1,0 +1,59 @@
+CREATE DDL(dATA Definition Language)
+INSERT INTO DML
+DELETE
+
+COMANDI:
+
+//crea la tabella
+CREATE TABLE sedeA (
+    codOperaio CHAR(4),
+    sesso CHAR(1) NOT NULL CHECK (sesso IN ('M', 'F', 'm', 'f')),
+    assuntoIl DATE NOT NULL,
+    stipendio DECIMAL(10,2) NOT NULL CHECK (stipendio >= 0),
+    codR INTEGER NOT NULL,
+    PRIMARY KEY (codOperaio),
+    FOREIGN KEY (codR) REFERENCES responsabili(codResp)
+        ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+//popola la tabella
+INSERT INTO sedeB
+VALUES
+('BCVL', 'M', '2010-04-03', 972.58, 3);
+
+//cancella una riga (o senza where tutta la tabella)
+DELETE FROM sedeB
+where
+('BCVL', 'M', '2010-04-03', 972.58, 3);
+
+//taglio orizzontale con where
+SELECT *
+FROM SedeA
+WHERE sesso = 'M'
+
+//taglio verticale
+SELECT codOperaio, stipendio
+FROM SedeA
+WHERE sesso = 'M'
+
+//aggiungo la seguente riga per ordinare in ordine crescente o aggiungo DESC per decrescente
+ORDER BY stipendio
+
+//evita di ripetere gli stessi dati
+SELECT DISTINCT stipendio
+FROM SedeA
+WHERE sesso = 'M'
+ORDER BY stipendio DESC
+
+//per averli in ordine del codice del responsabile
+SELECT *
+FROM SedeA
+WHERE sesso = 'M'
+ORDER BY codeR, codOperaio
+
+
+
+
+
+
+

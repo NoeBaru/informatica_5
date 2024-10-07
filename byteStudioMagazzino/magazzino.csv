@@ -1,0 +1,32 @@
+codiceProd,reparto,tipoProdotto,marca,modelloNome,qt,prezzo,nominativoResponsabile,cellResp,fornitore1,costo1,fornitore2,costo2,iva
+numerico 12,alfanumerica,alfanumerico,alfanumerico,alfanumerico,intero,decimal,alfabetico,numerico,alfanumerico,decimal,alfanumerico,decimal,float
+810000000050,informatica,tablet,Apple,"iPad Pro M4 13"" 512 GB",6,1999,Giacinto Pinto,366 6616216,Mediaworld,1697,Apple,1819,22%
+810000000051,informatica,pc desktop,HP,HP - VICTUS 15L GAMING DESKTOP,3,1200,Giacinto Pinto,366 6616216,Euronics,999,Amazon,749,22%
+810000000052,informatica,pc desktop,Acer,ACER - Desktop ASPIRE TC TC-1780-Nero,7,849,Giacinto Pinto,366 6616216,Euronics,749,Mediaworld,649,22%
+810000000053,informatica,laptop,Lenovo,"Lenovo IdeaPad Slim 3 Notebook 15"" AMD Ryzen5 16GB 512GB",2,799,Giacinto Pinto,366 6616216,Unieuro,628,Amazon,579,22%
+810000000054,informatica,laptop,Asus,ASUS - Notebook F1605ZA-MB198W-TRANSPARENT SILVER,5,889,Giacinto Pinto,366 6616216,Euronics,733,Unieuro,849,22%
+810000000060,telefonia,smartphone,Apple,iPhone 15 Pro,16,1549,Mario Rossi,375 9482941,Euronics,1482,Apple,1398,22%
+810000000061,telefonia,smartphone,Samsung,s24 Ultra,18,1289,Mario Rossi,375 9482941,Mediaworld,1134,Samsung,1256,22%
+810000000062,telefonia,smartphone,Huawei,P60,11,780,Mario Rossi,375 9482941,Amazon,720,Huawei,780,22%
+810000000063,telefonia,smartphone,Xiaomi,Redmi 13T,23,400,Mario Rossi,375 9482941,Uniero,364,Xiaomi,349,22%
+810000000064,telefonia,smartphone,Honor,200 pro,7,746,Mario Rossi,375 9482941,Ebay,730,Honor,680,22%
+810000000070,grandi elettrodomestici,frigorifero,Samsung,Frigorifero Side by Side Family Hub™ 614L RS6HA8891SL,9,2299,Silvano Soloperto,339 1157273,Unieuro,2399,,,22%
+810000000071,grandi elettrodomestici,lavatrice,Samsung,Lavatrice Samsung BESPOKE AI™ Ecodosatore 11Kg WW11DB7B94GBU3,12,799,Silvano Soloperto,339 1157273,Mediaworld,799,Unieuro,1149,22%
+810000000072,grandi elettrodomestici,lavastoviglie,Samsung,Lavastoviglie da Incasso Samsung Serie 5 DW60CG530B00,15,999,Silvano Soloperto,339 1157273,Ebay,776,,,22%
+810000000073,grandi elettrodomestici,forno,Samsung,Forno a microonde ad Incasso Samsung 23L MS23A7318AK,18,499,Silvano Soloperto,339 1157273,Ebay,221,Amazon,225,22%
+810000000074,grandi elettrodomestici,purificatore,Samsung,Purificatore d’aria Samsung Cube™ 47 mq AX47R9080SS,21,399,Silvano Soloperto,339 1157273,Amazon,349,,,22%
+810000000080,piccoli elettrodomestici,macchina per popcorn,Ariete,Pop Corn XL Party Time Ariete Rosso,10,60,Alessio Maiorano,333 258 7401,Mediaworld,39,Ariete,36,22%
+810000000081,piccoli elettrodomestici,frullatore ad immersione,Ariete,"FRULLATORE AD IMMERSIONE, Tritatutto capacità 500 ml; Frusta a filo in acciaio inox; Bicchiere graduato da 600 ml in plastica senza BPA.",10,80,Alessio Maiorano,333 258 7401,Mediaworld,47,Unieuro,47,22%
+810000000082,piccoli elettrodomestici,yogurtiera,Ariete,"Yogurtiera elettrica con capacità totale 1,5 litri",14,21,Alessio Maiorano,333 258 7401,Euronics,20,Mediaworld,19,22%
+810000000083,piccoli elettrodomestici,vaporiera,Russell Hobbs,"Vaporiera 9,0l con 3 contenitori per multicottura",20,45,Alessio Maiorano,333 258 7401,Unieuro,39,Amazon,38,22%
+810000000084,piccoli elettrodomestici,aspirabriciole,Black+Decker,Aspirabriciole senza fili potente a batteria litio con doppio sistema di filtraggio,9,21,Alessio Maiorano,333 258 7401,Amazon,20,Euronics,21,22%
+810000000090,televisori,televisore,Salora,"Salora Smart TV 32 Pollici, Televisore con 32 Pollici Display HD Smart TV Android, Sintonizzatore DVB-T2/S2 HEVC 10 | WiFi, Netflix Televisore 32 pollici | Nero [Classe di efficienza energetica E]",7,199,Francesco Verdi,333-6549866,Amazon,190,Unieuro,185,22%
+810000000091,televisori,televisore,Sony,"Sony BRAVIA KD-32W800 - Smart TV 32 pollici, HD Ready LED, HDR, Android TV, KD32W800PAEP [Classe di efficienza energetica F]",4,289,Francesco Verdi,333-6549867,Amazon,279,Euronics,285,22%
+810000000092,televisori,telecomando,Superpow,Telecomando Universale Compatibile con Tutti i Modelli Samsung Smart TV LCD LED HDTV 3D,20,11,Francesco Verdi,333-6549868,Amazon,7,Ebay,"8,5",22%
+810000000093,televisori,televisore,Samsung,"SAMSUNG Display LFD 32"" LED QM32R-T 32 1920x1080 Full HD con MagicInfo",12,1105,Francesco Verdi,333-6549869,Amazon,1090,Mediaworld,985,22%
+810000000094,televisori,televisore,Samsung,"Samsung TV UE43CU7090UXZT Crystal UHD 4K, Smart TV 43"", Crystal Processor 4K, Slim Look, Q-Symphony e OTS Lite, DVBT-2, Integrato con Bixby, compatibile con Alexa e Google Assistant, Black [2024] [Classe di efficienza energetica G]",8,350,Francesco Verdi,333-6549870,Amazon,324,Euronics,318,22%
+810000000095,televisori,televisore,Samsung,Smart TV 4K,1,600,Francesco Verdi,333-6549871,ePrice,549,Idealo,550,22%
+810000000096,televisori,televisore,Hisense,Smart TV 4K,1,378,Francesco Verdi,  333-6549871,Amazon,342,ePrice,340,22%
+810000000097,televisori,televisore,Samsung,Smart TV 4K,1,450,Francesco Verdi,  333-6549871,Amazon,412,ePrice,415,22%
+810000000098,televisori,televisore,Hisense,Smart TV 4K,1,330,Francesco Verdi,  333-6549871,ePrice,304,Idealo,305,22%
+810000000099,televisori,televisore,LG,Smart TV 4K,7,429,Francesco Verdi,  333-6549871,ePrice,394,Idealo,395,22%

@@ -1,0 +1,224 @@
+body {
+    background-image: url('img/sfondo.jpg'); /*Imposta l'immagine di sfondo*/
+    background-size: cover; /*Fa in modo che l'immagine copra tutta la pagina*/
+    background-position: center; /*Centra l'immagine*/
+    background-repeat: no-repeat; /*Evita che l'immagine si ripeta*/
+    margin: 0; /*Rimuove i margini predefiniti*/
+    padding: 0; /*Rimuove il padding predefinito*/
+    font-family: Arial, sans-serif; /*Imposta il font per il testo*/
+    justify-content: center; /*Per centrare orizzontalmente*/
+    align-items: center; /*Per centrare verticalmente*/
+}
+.banner{
+    width: 100%; /*Imposta la larghezza del banner al 100%*/
+    height: auto; /*Imposta l'altezza automatica in base al contenuto*/
+}
+
+/*Imposta la larghezza del logo e lo rende cliccabile*/
+.logo {
+    width: 80px; /*Imposta la larghezza del logo*/
+    float: left; /*Posiziona il logo a sinistra*/
+    margin-left: 20px; /*Aggiunge margine a sinistra*/
+    cursor: pointer; /*Cambia il cursore quando si passa sul logo*/
+}
+
+.menu{
+    position: relative; /*Imposta il menu come relativo per la posizione dei suoi figli*/
+}
+
+.ani-menu{
+    visibility: hidden; /*Nasconde il menu animato*/
+    opacity: 0; /*Rende il menu trasparente*/
+    position: absolute; /*Posiziona il menu fuori dal flusso normale*/
+    top: 100%; /*Posiziona il menu subito sotto l'elemento genitore*/
+    left: 0; /*Allinea il menu a sinistra*/
+    width: 100%; /*Imposta la larghezza del menu al 100% dell'elemento genitore*/
+    transform: translateY(-1em); /*Sposta il menu verso l'alto*/
+    z-index: -1; /*Imposta il menu dietro agli altri elementi*/
+    transition: all 1.5s ease 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s; /*Aggiunge la transizione per la visibilità e l'opacità*/
+}
+
+.menu:focus .ani-menu,
+.menu:focus-within .ani-menu,
+.menu:hover .ani-menu{
+    visibility: visible; /*Rende visibile il menu quando il mouse è sopra*/
+    opacity: 1; /*Rende il menu completamente opaco*/
+    z-index: 1; /*Porta il menu sopra gli altri elementi*/
+    transform: translateY(0); /*Rimuove la traslazione verso l'alto*/
+    transition-delay: 0s, 0s, 0.3s; /*Ritarda le transizioni*/
+}
+
+.menu-list > li {
+    display: inline-block; /*Mostra gli elementi della lista in linea*/
+}
+
+.navbar{
+    position: fixed; /*Fissa il menu in alto anche quando si scorre la pagina*/
+    top: 0; /*Posiziona il menu nella parte superiore della pagina*/
+    left: 0; /*Allinea il menu a sinistra*/
+    width: 100%; /*Imposta la larghezza del menu al 100%*/
+    z-index: 1000; /*Imposta il menu sopra altri elementi*/
+    background-color: rgba(0, 0, 0, 0.8); /*Aggiunge uno sfondo semitrasparente al menu*/
+}
+
+.navbar a{
+    color: rgb(255, 255, 255); /*Imposta il colore del testo del menu*/
+    display: block; /*Rende cliccabile tutta l'area del link*/
+    padding: 30px 35px; /*Aggiunge padding ai link del menu*/
+    text-decoration: none; /*Rimuove la sottolineatura dai link*/
+    font-family: big john; /*Imposta il font del testo del menu*/
+    text-align: center; /*Allinea il testo al centro*/
+}
+
+.ani-menu a{
+    width: 60%; /*Imposta la larghezza dei link del menu animato*/
+    padding: 15px 25px; /*Aggiunge padding ai link del menu animato*/
+    text-align: center; /*Allinea il testo al centro*/
+    font-family: roboto; /*Imposta il font dei link del menu animato*/
+}
+
+.ani-menu:hover{
+    background: rgba(0, 0, 0, 0.8); /*Imposta il colore di sfondo quando si passa sopra il menu animato*/
+}
+
+.navbar a:hover{
+    background: grey; /*Cambia il colore di sfondo del menu quando si passa con il mouse*/
+}
+
+.navbar ul, nav ul li{
+    list-style: none; /*Rimuove i punti elenco dagli elementi della lista*/
+    padding: 0; /*Rimuove il padding*/
+    margin: 0; /*Rimuove il margine*/
+    text-align: center; /*Allinea il testo al centro*/
+}
+
+.navbar > ul{
+    background: rgba(0, 0, 0, 0.8); /*Imposta lo sfondo semitrasparente per il menu*/
+    text-align: center; /*Allinea il testo al centro*/
+}
+
+.navbar > ul > li{
+    display: inline-block; /*Mostra gli elementi del menu in linea*/
+    /*border-left: 1px solid #fff;*/
+}
+
+.navbar > ul > li:first-child{
+    border: none; /*Rimuove il bordo per il primo elemento della lista*/
+}
+
+.ani-menu{
+    background: grey; /*Imposta lo sfondo grigio per il menu animato*/
+}
+
+/*Stili per le immagini*/
+.images-section a{
+    display: flex; /*Usa Flexbox per gli elementi della sezione immagini*/
+    justify-content: space-around; /*Distribuisce uniformemente gli elementi*/
+    padding: 20px; /*Aggiunge padding intorno agli elementi*/
+}
+
+.images-section img{
+    width: 10%; /*Imposta la larghezza delle immagini al 10%*/
+    height: auto; /*Mantiene le proporzioni delle immagini*/
+}
+
+.search-bar{
+    width: 50%;
+    padding: 10px 15px;
+    border: 3px solid #cccccc;
+    border-radius: 25px 25px 25px 25px;
+    font-size: 20px;
+    outline: none;
+    background-color: #cccccc;
+    color: rgb(0, 0, 0);
+    display: block;
+    margin: 0 auto;
+    margin-top: 80px;
+    
+}
+
+/*Per la tabella*/
+table {
+    width: 60%; /*Larghezza della tabella*/
+    border-collapse: separate; /* Rimuove lo spazio tra le celle */
+    margin: 50px auto; /* Margini per separare dalla pagina */
+    background-color: #333; /* Colore di sfondo della tabella */
+    color: white; /* Testo bianco */
+    border-radius: 10px; /* Bordo arrotondato */
+    overflow: hidden; /* Per il bordo arrotondato */
+}
+
+/* Stile delle celle e delle righe */
+th, td {
+    padding: 7px;
+    text-align: center; /* Testo centrato nelle celle */
+    border: 1px solid #444; /* Bordo sottile tra le celle */
+}
+
+/* Stile per l'header della tabella */
+th {
+    background-color: #444; /* Colore di sfondo per l'intestazione */
+    font-weight: bold;
+}
+
+/* Hover sulle righe della tabella */
+tr:hover {
+    background-color: #555; /* Colore di sfondo grigio chiaro al passaggio del mouse */
+}
+
+.action-icon{
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+button {
+    background-color: transparent; /* Rende il bottone trasparente */
+    border: none; /* Rimuove il bordo */
+    cursor: pointer; /* Cambia il cursore quando si passa sopra il bottone */
+    padding: 10px; /* Aggiunge un po' di spazio intorno al contenuto del bottone */
+}
+
+.button-container {
+    display: flex;
+    justify-content: column; /* Allinea i pulsanti a destra */
+    margin-left: 20px;
+}
+
+button img {
+    width: 20px; /* Imposta la larghezza dell'immagine nel bottone */
+    height: auto; /* Mantiene le proporzioni dell'immagine */
+    vertical-align: middle; /* Allinea verticalmente l'immagine */
+}
+
+/*Stili per il footer*/
+footer {
+    text-align: center; /*Allinea il testo al centro nel footer*/
+    padding: 50px; /*Aggiunge padding al footer*/
+    margin-top: 1000px; /*Aggiunge margine sopra il footer*/
+    background-color: rgba(0, 0, 0, 0.8); /*Aggiunge uno sfondo semitrasparente al footer*/
+    color: white; /*Imposta il colore del testo del footer*/
+}
+
+/*Titolo del footer con font specifico*/
+#footer_title {
+    font: 140% Arial, sans-serif; /*Imposta il font del titolo del footer*/
+    text-align: center; /*Allinea il titolo al centro*/
+}
+
+/*Stile per i link nel titolo del footer*/
+#footer_title a:link {
+    color: rgb(255, 255, 255); /*Imposta il colore dei link non visitati nel titolo del footer*/
+    text-decoration: none; /*Rimuove la sottolineatura dai link nel titolo del footer*/
+}
+
+/*Colore dei link visitati nel titolo del footer*/
+#footer_title a:visited {
+    color: rgb(255, 255, 255); /*Imposta il colore dei link visitati nel titolo del footer*/
+}
+
+/*Cambia colore del link del titolo del footer quando c'e' il passaggio del mouse*/
+#footer_title a:hover {
+    color: grey; /*Cambia il colore dei link nel titolo del footer quando si passa con il mouse*/
+}

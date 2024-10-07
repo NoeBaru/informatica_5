@@ -1,0 +1,12 @@
+BOOTSTRAP
+Framework, più veloce, responsive ed è come avere una cartella di CSS
+
+posso inserire il link che gira su internet, altrimenti scaricare la cartella di CSS,
+così in caso di variazioni del sito o problemi con connessione ad internet, riesco a lavorare lo stesso
+
+server PHP + Bootstrap
+
+alla maturità scrivo: "Integro l'aspetto grafico tramite BOOTSTRAP così da rendere inoltre RESPONSIVE il mio sito, 
+uindi adattabile a tutti i dispositivi
+
+@mediascreen sceglie la classe in base al dispositivo

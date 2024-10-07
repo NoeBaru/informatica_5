@@ -1,0 +1,346 @@
+/* Imposta i margini e i padding a 0 per tutti gli elementi, usa un font fantasy con fallback su Arial o sans-serif, e applica il box-sizing al bordo */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: fantasy, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Imposta un'altezza minima del 100% per l'elemento html */
+html {
+    min-height: 100%;
+}
+
+/* Il corpo della pagina e' un contenitore flessibile con altezza minima 100vh per coprire l'intero schermo e con una disposizione a colonna */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Banner con un'immagine di sfondo che si estende a tutta l'area e una leggera sovrapposizione di trasparenza */
+.banner {
+    flex-grow: 1;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)), url(../img/sfondoWhite.png);
+    background-size: cover;
+    background-position: center;
+    padding: 20px 0;
+}
+
+/* Navbar con layout flessibile, centrata, e con una spaziatura tra gli elementi */
+.navbar {
+    width: 90%;
+    margin: auto;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 25px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Imposta la larghezza del logo e lo rende cliccabile */
+.logo {
+    width: 200px;
+    cursor: pointer;
+}
+
+/* Lista di navigazione con elementi visualizzati in linea */
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+/* Stile per i link nella navbar: testo bianco e tutto maiuscolo */
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+/* Linea decorativa sotto ogni link, che si espande al passaggio del mouse */
+.navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #fe0000;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+/* Al passaggio del mouse, la linea sotto il link si estende completamente */
+.navbar ul li:hover::after {
+    width: 100%;
+}
+
+/* Contenuto principale della pagina con layout flessibile, centrato e con padding */
+.content {
+    flex-grow: 1;
+    width: 80%;
+    position: relative;
+    top: 0;
+    text-align: left;
+    color: white;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 150px;
+    min-height: 600px; /* Altezza minima per allungare la pagina */
+}
+
+/* Titolo di primo livello con colore e dimensioni specifici */
+.content h1 {
+    color: rgb(7, 218, 255);
+    font-size: 90px;
+    margin-top: 30px;
+}
+
+/* Titolo di secondo livello con stile simile all'h1 */
+.content h2 {
+    color: rgb(7, 218, 255);
+    font-size: 70px;
+    margin-top: 40px;
+}
+
+/* Titolo di terzo livello con stile leggero e colore arancione */
+.content h3 {
+    margin: 20px 0;
+    font-size: 30px;
+    font-weight: 100;
+    line-height: 30px;
+    color: #fe9800;
+    font-family: fantasy, Arial, sans-serif;
+}
+
+/* Titolo di quarto livello, bianco e con line-height regolato */
+.content h4 {
+    margin: 20px auto;
+    font-size: 25px;
+    font-weight: 100;
+    line-height: 30px;
+    color: white;
+}
+
+/* Paragrafo bianco con dimensioni e stile del testo personalizzati */
+.content p {
+    margin: 20px auto;
+    font-size: 25px;
+    font-weight: 100;
+    line-height: 30px;
+    color: white;
+}
+
+/* Stile per i link all'interno dei paragrafi */
+content p a:link {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+/* Colore dei link visitati */
+content p a:visited {
+    color: rgb(255, 255, 255);
+}
+
+/* Cambia colore dei link al passaggio del mouse */
+content p a:hover {
+    color: rgb(255, 132, 0);
+}
+
+/* Stile base per i link */
+a {
+    color: #fe9800;
+    text-decoration: none;
+}
+
+/* Link visitato mantiene il colore arancione */
+a:visited {
+    color: #fe9800;
+}
+
+/* Al passaggio del mouse, il link diventa bianco e sottolineato */
+a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Cambia colore del link quando viene cliccato */
+a:active {
+    color: white;
+}
+
+/* Stile per i bottoni: arancioni con bordo arrotondato e animazione al passaggio del mouse */
+button {
+    width: 200px;
+    font-size: 25px;
+    padding: 20px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    border: 2px solid #fe9800;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Barra di colore arancione all'interno del bottone, espansione al passaggio del mouse */
+span {
+    background: #fe9800;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+/* Espande la barra arancione quando c'e' il passaggio del mouse sul bottone */
+button:hover span {
+    width: 100%;
+}
+
+/* Cambia lo sfondo del bottone al passaggio del mouse */
+button:hover {
+    background-color: #fe9800;
+}
+
+/* Stile per i link all'interno dei bottoni */
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Il link visitato all'interno del bottone mantiene il colore bianco */
+button a:visited {
+    color: white;
+}
+
+/* Stile per il modulo newsletter di iscrizione, impostato come 100% della larghezza */
+.form_newsletter {
+    width: 100%;
+}
+
+/* Imposta il modulo in colonna e con una larghezza massima di 500px */
+.form_newsletter form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 0;
+}
+
+/* Stile per i gruppi di campi del form, con layout a colonne e margine inferiore */
+.form_group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: left;
+}
+
+/* Etichetta all'interno del gruppo form con margine destro */
+.form_group label {
+    flex: 1;
+    margin-right: 10px;
+}
+
+/* Stile per i campi di input di testo, data e range */
+.form_group input[type="text"],
+.form_group input[type="date"],
+.form_group input[type="range"] {
+    flex: 2;
+}
+
+/* Allinea i bottoni del form al centro */
+.form_buttons {
+    text-align: center;
+}
+
+/* Barra di ricerca con padding, bordi arrotondati e stile specifico */
+.search-bar {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #cccccc;
+    border-radius: 25px 25px 25px 25px;
+    font-size: 25px;
+    outline: none;
+    color: rgb(255, 132, 0);
+}
+
+/* Footer della pagina, centrato e con sfondo scuro */
+footer {
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: #262626;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Titolo del footer con font specifico */
+#footer_title {
+    font: 140% Arial, sans-serif;
+}
+
+/* Stile per i link nel titolo del footer */
+#footer_title a:link {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+/* Colore dei link visitati nel titolo del footer */
+#footer_title a:visited {
+    color: rgb(255, 255, 255);
+}
+
+/* Cambia colore del link del titolo del footer quando c'e' il passaggio del mouse */
+#footer_title a:hover {
+    color: red;
+}
+
+/* Testo centrato per il titolo del footer */
+#footer_title {
+    text-align: center;
+}
+
+/* Sezione risultati con margine superiore e altezza minima */
+#risultati {
+    margin-top: 20px;
+    color: white;
+    min-height: 200px;
+}
+
+/* Icona con larghezza specifica e margine */
+.icon {
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Icona di ricerca con stile simile */
+.icon_search {
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Barra di ricerca con larghezza massima e padding */
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border: 2px solid #cccccc;
+    border-radius: 25px;
+    font-size: 25px;
+    outline: none;
+    color: rgb(255, 132, 0);
+}
