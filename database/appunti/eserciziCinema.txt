@@ -1,0 +1,96 @@
+
+ESERCIZI CINEMA (VEDI FILE CLASSROOM "Tesi esercizi SQL")
+
+ES1
+SELECT nome
+FROM sale
+WHERE citta = 'Pisa';
+
+/////////////////
+
+ES2
+SELECT titolo
+FROM film
+WHERE regista LIKE '%Fellini%'
+AND annoProduzione > 1960;
+
+/////////////////
+
+ES3
+SELECT titolo, durata
+FROM film
+WHERE UPPER(genere) = 'FANTASCIENZA' AND (nazionalita = 'Giapponese' OR nazionalita = 'Francese') AND annoProduzione > 1990;
+
+/////////////////
+
+ES4
+SELECT titolo
+FROM film
+WHERE (genere = 'Fantascienza AND nazionalita = Giapponese AND annoProduzione > 1990)
+OR nazionalita = 'Francese';
+
+/////////////////
+
+ES5
+SELECT DISTINCT titolo, genere 
+FROM film, proiezioni
+WHERE data = "2004-12-25" AND film.codFilm = proiezioni.codFilm
+
+/////////////////
+
+ES6
+--Il titolo ed il genere dei film proiettati il giorno di Natale 2004
+SELECT DISTINCT titolo, genere 
+FROM film, proiezioni, sale
+WHERE data = "2004-12-25" AND film.codFilm = proiezioni.codFilm 
+AND sale.citta = "Napoli" 
+AND sale.codSala = proiezioni.codSala
+
+/////////////////
+
+ES7
+-- I nomi delle sale di Napoli in cui il giorno di Natale 2004 
+-- è stato proiettato un film con R.Williams
+SELECT DISTINCT sale.nome
+FROM proiezioni, sale, attori, recita
+WHERE proiezioni.data = "2004-12-25" 
+AND sale.citta = "Napoli" 
+AND attori.nome LIKE "%Williams%" 
+AND recita.codAttore = attori.codAttore
+AND recita.codFilm = proiezioni.codFilm
+AND proiezioni.codSala = sale.codSala
+
+/////////////////
+
+STAMPA TUTTO
+
+SELECT *
+FROM film, recita, attori, proiezioni, sale
+WHERE film.codFIlm = recita.codFilm AND recita.codAttore = attori.codAttore AND film.codFilm = proiezioni.codFilm AND sale.codSala = proiezioni.codSala
+
+/////////////////
+
+ES8
+SELECT titolo, nome
+FROM attori, film
+WHERE attori.nazionalita = "Francese";
+
+/////////////////
+
+ES9
+SELECT film.titolo, sale.nome
+FROM film, sale, proiezioni
+WHERE proiezioni.dataProiezione = "2005-01-%%";
+
+/////////////////
+
+ES10
+SELECT titolo
+FROM film, attori, recita
+WHERE attori.codAttore = recita.codAttore AND (attori.nome = "%Mastroianni%" OR "%Loren%");
+
+
+
+
+
+

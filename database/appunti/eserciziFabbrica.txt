@@ -1,0 +1,106 @@
+/////////////////////////
+ESERCIZI FABBRICA (N.3,4,5,10,11,12,13,14,15,20,21)
+/////////////////////////
+
+ES3
+
+SELECT *
+FROM sedeA
+WHERE codOperaio = 'PLFR';
+
+UPDATE sedeA
+SET codR = 3
+WHERE codOperaio = 'PLFR';
+
+/////////
+
+ES4
+
+DELETE FROM responsabili
+WHERE Cognome = "Lerda";
+//non si può eliminare il padre perché i figli non possono rimanere orfani
+
+//////////
+
+ES5
+
+SELECT *
+FROM sedeA
+WHERE codR = 1 OR codR = 2;
+
+UPDATE sedeA
+SET stipendio = stipendio + 30
+WHERE codR = 1 OR codR = 2;
+
+///////////
+
+ES10
+SELECT *
+FROM sedeA
+WHERE codR = 1;
+
+///////////
+
+ES11
+SELECT *
+FROM sedeA
+WHERE sesso = 'F' AND strftime('%Y', assuntoIl) = "2010";
+
+///////////
+
+ES12
+
+SELECT *
+FROM sedeB
+WHERE stipendio < 900;
+
+////////////
+
+ES13
+SELECT DISTINCT stipendio
+FROM sedeB
+WHERE sesso = 'M' ASC; //crescente asc e decrescente desc
+
+////////////
+
+ES14
+
+SELECT codR
+FROM sedeA
+ORDER BYcodR
+
+
+/////////////
+
+ES15
+
+SELECT codR, codOperaio
+FROM sedeB
+
+////////////
+
+ES16
+
+SELECT sedeA.*, cognome, nome //così prendo tutto di sedeA e solo le ultime due colonne di Responsabili senza ripetere così il codiceR
+FROM sedeA, responsabili
+WHERE codR = codResp;
+
+////////////
+
+ES17
+
+SELECT *
+FROM sedeB, responsabili;
+
+////////////
+
+ES20
+
+
+////////////
+
+ES21
+
+SELECT cognome, nome
+FROM responsabili, sedeA
+WHERE codOperaio = 'UGUG' AND codR = codResp;

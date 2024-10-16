@@ -1,0 +1,124 @@
+CREATE DDL(dATA Definition Language)
+INSERT INTO DML
+DELETE
+
+
+join: per mettere insieme due colonne (una di fianco all'altra)
+unione: per mettere insieme due tabelle (una dopo l'altra)
+
+tupla: la riga di qualunque tabella
+grado: numero di colonne
+cardinalità: numero di righe
+istanza: insieme di tutte le righe e colonne (la tabella)
+
+X: peratore insiemistico tra tabelle
+
+la tabella risultato del prodotto cartesiano avrà un grado uguale alla somma dei gradi delle tabelle di partenza (es.2x1 = 3)
+la cardinalità è il prodotto delle cardinalità delle tabelle iniziali
+
+chiave primaria: sottolineato
+chiave esterna: tratteggio sotto o con asterisco
+
+COMANDI:
+
+//crea la tabella
+CREATE TABLE sedeA (
+    codOperaio CHAR(4),
+    sesso CHAR(1) NOT NULL CHECK (sesso IN ('M', 'F', 'm', 'f')),
+    assuntoIl DATE NOT NULL,
+    stipendio DECIMAL(10,2) NOT NULL CHECK (stipendio >= 0),
+    codR INTEGER NOT NULL,
+    PRIMARY KEY (codOperaio),
+    FOREIGN KEY (codR) REFERENCES responsabili(codResp)
+        ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+//popola la tabella
+INSERT INTO sedeB
+VALUES
+('BCVL', 'M', '2010-04-03', 972.58, 3);
+
+//cancella una riga (o senza where tutta la tabella)
+DELETE FROM sedeB
+where
+('BCVL', 'M', '2010-04-03', 972.58, 3);
+
+//taglio orizzontale con where
+SELECT *
+FROM SedeA
+WHERE sesso = 'M'
+
+//taglio verticale
+SELECT codOperaio, stipendio
+FROM SedeA
+WHERE sesso = 'M'
+
+//aggiungo la seguente riga per ordinare in ordine crescente ASC sottinteso o aggiungo DESC per decrescente
+ORDER BY stipendio
+
+//evita di ripetere gli stessi dati
+SELECT DISTINCT stipendio
+FROM SedeA
+WHERE sesso = 'M'
+ORDER BY stipendio DESC
+
+//per averli in ordine del codice del responsabile
+SELECT *
+FROM SedeA
+WHERE sesso = 'M'
+ORDER BY codeR, codOperaio
+
+//prodotto cartesiano: insieme di tutte le possibili combinazioni di righe delle due o più tabelle inserite
+SELECT *
+FROM sedeB, Responsabili;
+
+//congiunzione o equi join naturale (equi: c'è l'=. naturale: non ripeto le colonne che si ripetono)
+SELECT sedeB.*, cognome, nome --così prendo tutto di sedeB e solo le ultime due colonne di Responsabili senza ripetere così il codiceR
+FROM sedeB, Responsabili;
+WHERE codR = codResp --WHERE sedeB.codR = responsabili.codResp nel caso io abbia lo stesso nome uso la dot notation
+
+//posso mettere degli alias nella select e rinominare le intestazioni di colonna e delle tabelle
+SELECT b.*, cognome AS "cognome responsabile", nome AS "nome responsabile"
+FROM SedeB b, responsabili r
+WHERE b.codR = r.codResp
+
+//per trovare uan data specifica
+
+AND strftime('%Y', assuntoIl) = "2011"
+
+oppure fatto in SQL standard è: AND YEAR(assuntoIl) = 2011
+
+//controllo che il voto sia in un range da a 
+CHECK (voto BETWEEN 0 AND 10)
+
+//controllo che l'anno di nascita non sia nel futuro
+YEAR(annoNascita) = YEAR(CURRENT_DATE)
+
+//usando una stringa la cerca identica
+SELECT game.*, genre.genre_name
+FROM game, genre
+WHERE genre.genre_name = "Fighting" AND genre.id = game.genre_id
+
+//usando LIKE cerco la stringa simile
+SELECT game.*, genre.genre_name
+FROM game, genre
+WHERE genre.genre_name LIKE "Fi%" AND genre.id = game.genre_id
+
+
+//cercare una lettera in una stringa (che sia ovunque, non solo che inizi con esso)
+SELECT game.*, genre.genre_name
+FROM game, genre
+WHERE genre.genre_name LIKE "%S%" AND genre.id = game.genre_id
+
+//per contare le righe di un qualcosa cercato
+SELECT COUNT(*), game.*, genre.genre_name
+FROM game, genre
+WHERE genre.genre_name LIKE "%Sport%" AND genre.id = game.genre_id
+
+
+
+
+SELECT superhero.id, superhero_name, power_name, power_id
+FROM superhero, superpower, hero_power
+WHERE superhero.id = 70;
+
