@@ -1,0 +1,3 @@
+INSERT INTO Genitori (CodGenitore, CodFiglio)
+VALUES
+('BNOVVN68B69B55D', 'BNCLCU92A01H501H')

@@ -1,0 +1,10 @@
+CREATE TABLE persone(
+    CodiceFiscale CHAR(16) PRIMARY KEY,
+    Nome VARCHAR(50) NOT NULL,
+    Cognome VARCHAR(50) NOT NULL,
+    Sesso CHAR(1) NOT NULL CHECK(Sesso IN ('M', 'F')),
+    NatoIL DATE,
+    CodRes INTEGER NOT NULL,
+	FOREIGN KEY (CodRes) REFERENCES residenze(CodR)
+		ON DELETE RESTRICT ON UPDATE CASCADE
+);

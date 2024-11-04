@@ -1,0 +1,79 @@
+Esercizi museo
+
+///////////////
+ES1
+SELECT opere.codice, opere.titolo
+FROM opere, artisti, musei
+WHERE artisti.nomeA = "Tiziano"
+AND musei.nomeM = "National Gallery"
+AND 
+AND
+
+///////////////
+ES2
+SELECT codice, titolo
+FROM opere
+WHERE CodA IS NULL
+
+///////////////
+ES3
+SELECT Codice, Titolo
+FROM opere
+WHERE CodM IS NULL
+ORDER BY Titolo;
+
+///////////////
+ES4
+SELECT artisti.nomeA, opere.titolo
+FROM artisti, opere, musei
+WHERE (musei.nomeM = "Galleria degli Uffizi" OR musei.nomeM = "National Gallery")
+AND opere.codA = artisti.codA
+AND opere.codM = musei.codM
+
+
+
+
+SELECT artisti.nomeA, opere.titolo
+FROM artisti, opere, musei
+WHERE musei.nomeM IN ("Galleria degli Uffizi", "National Gallery")
+AND opere.codA = artisti.codA
+AND opere.codM = musei.codM
+
+///////////////
+ES6
+SELECT artisti.nomeA, opere.titolo
+FROM artisti, opere, musei
+WHERE musei.citta = "Firenze"
+AND opere
+
+///////////////
+ES7
+SELECT artisti.nomeA, opere.titolo
+FROM artisti, opere, musei
+WHERE musei.citta = "Firenze"
+AND opere.codA
+
+///////////////
+ES8
+SELECT opere.codice, opere.titolo
+FROM artisti, opere, musei
+WHERE artisti.nomeA =  "Tiziano" AND musei.citta = "Londra"
+AND opere.codA = artisti.codA
+AND opere.codM = musei.codM
+
+///////////////
+ES9
+SELECT artisti.nomeA, opere.titolo
+FROM artisti, opere, musei
+WHERE artisti.nazionalita = "ES" AND musei.citta = "Firenze"
+AND opere.codA = artisti.codA
+AND opere.codM = musei.codM
+
+///////////////
+ES10
+SELECT opere.codice, opere.titolo
+FROM artisti, opere, musei, personaggi
+WHERE artisti.nazionalita = "ITA" AND musei.citta = "Londra"
+AND personaggi.personaggio LIKE "%Madonna%"
+AND opere.codA = artisti.codA
+AND opere.codM = musei.codM

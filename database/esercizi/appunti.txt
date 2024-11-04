@@ -1,23 +1,35 @@
 CREATE DDL(dATA Definition Language)
-INSERT INTO DML
-DELETE
+INSERT INTO, UPDATE e DELETE DML
+Query con select
 
 
 join: per mettere insieme due colonne (una di fianco all'altra)
 unione: per mettere insieme due tabelle (una dopo l'altra)
+
+condizione di congiunzione: campi che uniscono le tabelle, necessari perché sennò fa il prodotto cartesiano
 
 tupla: la riga di qualunque tabella
 grado: numero di colonne
 cardinalità: numero di righe
 istanza: insieme di tutte le righe e colonne (la tabella)
 
-X: peratore insiemistico tra tabelle
+self join: join della stessa tabella con due alias diversi
+
+distinct: se ci possono essere due righe identiche lo metto, così non le ripete
+
+X: peratore insiemistico tra tabelle (prodotto cartesiano)
+union: due tabelle con le stesse colonne vengono messe una sotto l'altra
+-: quando c'è può essere NULL quindi non metto "NOT NULL"
 
 la tabella risultato del prodotto cartesiano avrà un grado uguale alla somma dei gradi delle tabelle di partenza (es.2x1 = 3)
 la cardinalità è il prodotto delle cardinalità delle tabelle iniziali
 
 chiave primaria: sottolineato
 chiave esterna: tratteggio sotto o con asterisco
+
+chiave esterna comando:
+- ON UPDATE CASCADE ON DELETE SET NULL se il campo può essere nullo
+- ON UPDATE CASCADE ON DELETE RESTRICT 
 
 COMANDI:
 
@@ -115,10 +127,54 @@ SELECT COUNT(*), game.*, genre.genre_name
 FROM game, genre
 WHERE genre.genre_name LIKE "%Sport%" AND genre.id = game.genre_id
 
+//Per unire due tabelle con le stesse colone una sotto l'altra (e li mette già in ordine e distinti)
+SELECT *
+FROM sedeA
+UNION 
+SELECT * 
+FROM sedeB
 
+OPPURE per togliere le ripetizioni del tutto
 
+SELECT *
+FROM sedeA
+UNION ALL 
+SELECT * 
+FROM sedeB
+ORDER BY codOperaio --in teoria lo fa in automatico, ma non si sa mai
+
+//crea una colonna di calcolo (utile per l'Iva per es) in più, NON LA SALVA, solo nella visualizzazione si vede
+SELECT *, "sede A" as sede
+FROM sedeA
+UNION ALL 
+SELECT *, "sede B" as sede
+FROM sedeB
+ORDER BY codOperaio
 
 SELECT superhero.id, superhero_name, power_name, power_id
 FROM superhero, superpower, hero_power
 WHERE superhero.id = 70;
 
+//per fare una regex
+anno CHAR(4)
+CHECK (anno REGEXP '^[0-9]{4}$')
+
+//creare una vista, la aggiorna in automatico
+CREATE VIEW "VistaProva" AS
+
+//crea una tabella, NON la aggiorna
+CREATE TABLE "tabMigliori" AS
+SELECT
+FROM
+WHERE
+
+//regex regole inizio e fine
+^ all'inizio
+$ alla fine
+
+//per mettere le maiuscole nel cognome e nel nome
+"classe" REGEXP '^[1-5][A-Z]$'
+"nome" REGEXP '^[A-Z][a-z]+$'
+"cognome" REGEXP '^[A-Z][a-z]+$'
+
+"media_voti" BETWEEN 0 AND 10

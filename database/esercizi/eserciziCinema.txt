@@ -71,23 +71,43 @@ WHERE film.codFIlm = recita.codFilm AND recita.codAttore = attori.codAttore AND 
 /////////////////
 
 ES8
-SELECT titolo, nome
-FROM attori, film
-WHERE attori.nazionalita = "Francese";
+SELECT film.titolo, attori.nome
+FROM attori, film, recita
+WHERE attori.nazionalita = "FR" AND film.codFilm = recita.codFilm AND attori.codAttore = recita.codAttori;
 
 /////////////////
 
 ES9
 SELECT film.titolo, sale.nome
 FROM film, sale, proiezioni
-WHERE proiezioni.dataProiezione = "2005-01-%%";
+WHERE sale.citta = "Pisa" AND strftime("%Y-%M",proiezioni.dataProiezione) = "2005-01" AND film.codFilm = proiezioni.codFilm AND sale.codSala = proiezioni.codSala;
 
 /////////////////
 
 ES10
 SELECT titolo
 FROM film, attori, recita
-WHERE attori.codAttore = recita.codAttore AND (attori.nome = "%Mastroianni%" OR "%Loren%");
+WHERE film.codFIlm = recita.codFilm AND attori.codAttore = recita.codAttore AND (attori.nome LIKE "%Mastroianni%" OR "%Loren%");
+
+/////////////////
+
+-- elenco delle nazionalita o degli attori o del film
+SELECT nazionalita
+FROM attori
+UNION
+SELECT nazionalita
+FROM film
+
+/////////////////
+--trovare le nazioni dove è stato girato un film o è nato un attore
+SELECT Nazionalita
+FROM attori
+
+UNION
+
+SELECT Nazionalita
+FROM film;
+
 
 
 

@@ -104,3 +104,29 @@ ES21
 SELECT cognome, nome
 FROM responsabili, sedeA
 WHERE codOperaio = 'UGUG' AND codR = codResp;
+
+////////////
+
+ES25
+
+SELECT *
+FROM SedeB
+WHERE strftime('%Y', AssuntoIl) = '2011'
+ORDER BY AssuntoIl DESC;
+
+////////////
+
+ES26
+
+SELECT DISTINCT CodR
+FROM SedeB
+WHERE Stipendio < 980;
+
+////////////
+
+ES27
+
+SELECT CodOperaio, AssuntoIl
+FROM SedeB, responsabili
+WHERE CodR = codResp AND Nome = 'Maria' AND Cognome = 'Fassa'
+ORDER BY AssuntoIl ASC;

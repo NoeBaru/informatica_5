@@ -1,0 +1,18 @@
+SELECT *
+FROM superhero
+WHERE superhero_name LIKE "%Batman%"
+
+SELECT superhero.superhero_name, superhero.full_name, gender.gender,
+c_occhi.colour AS "colore occhi", c_capelli.colour AS "colore capelli",
+c_skin.colour AS "colore pelle", race.race, publisher.publisher_name,
+alignment.alignment, superhero.height_cm, superhero.weight_kg
+FROM superhero, gender, colour AS c_occhi, colour AS c_capelli,
+colour AS c_skin, race, publisher.publisher_name, alignment.alignment
+WHERE superhero_name LIKE "%Batman%"
+AND superhero.gender_id = gender.id
+AND superhero.eye_colour_id = c_occhi 
+AND superhero.hair_colour_id = c_capelli
+AND superhero.skin_colour_id = c_skin.id
+AND superhero.race_id = race.id
+AND superhero.publisher_id = publisher.id
+AND superhero.alignment_id = alignment.id

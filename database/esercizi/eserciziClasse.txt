@@ -1,0 +1,142 @@
+///////
+CREATE
+
+//
+Creazione della tabella genitori
+
+CREATE TABLE genitori(
+    CodGenitore CHAR(16),
+    CodFiglio CHAR(16),
+    PRIMARY KEY (CodGenitore, CodFiglio),
+    FOREIGN KEY (CodGenitore) REFERENCES Persone(CodiceFiscale)
+			ON DELETE RESTRICT ON UPDATE CASCADE
+    FOREIGN KEY (CodFiglio) REFERENCES Persone(CodiceFiscale)
+			ON DELETE RESTRICT ON UPDATE CASCADE
+
+);
+
+//
+Creazione della tabella persone
+
+CREATE TABLE persone(
+    CodiceFiscale CHAR(16) PRIMARY KEY,
+    Nome VARCHAR(50) NOT NULL,
+    Cognome VARCHAR(50) NOT NULL,
+    Sesso CHAR(1) NOT NULL CHECK(Sesso IN ('M', 'F')),
+    NatoIL DATE,
+    CodRes INTEGER NOT NULL,
+	FOREIGN KEY (CodRes) REFERENCES residenze(CodR)
+		ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+//
+Creazione della tabella residenze
+
+CREATE TABLE residenze (
+    CodR INTEGER PRIMARY KEY AUTOINCREMENT,
+    Via VARCHAR(40) NOT NULL,
+	NumCiv VARCHAR(4) NOT NULL,
+	CAP CHAR(5) NOT NULL,
+    Citta VARCHAR(20) NOT NULL
+);
+
+//
+Creazione della tabella alunni
+
+CREATE TABLE "alunni"(
+	"ID" INTEGER PRIMARY KEY AUTOINCREMENT,	
+	"cognome"	VARCHAR(30) NOT NULL CHECK("cognome" REGEXP "^[A-Z][a-z]+$"),
+	"nome"	VARCHAR(30) NOT NULL CHECK("nome" REGEXP "^[A-Z][a-z]+$"),
+	"id_rappresentante" INTEGER,
+	"classe" VARCHAR(4) NOT NULL CHECK("classe" REGEXP "^[1-5][A-Z]$"),
+	"media_voti" REAL CHECK("media_voti" >= 0 AND "media_voti" <= 10),
+	FOREIGN KEY("id_rappresentante") REFERENCES alunni("ID")
+		ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+//////////
+INSERT
+
+//
+Inserimento dei genitori
+
+INSERT INTO Genitori (CodGenitore, CodFiglio)
+VALUES
+('BNOVVN68B69B55D', 'BNCLCU92A01H501H')
+
+//
+Inserimento delle persone
+
+INSERT INTO Persone (CodiceFiscale, Nome, Cognome, Sesso, NatoIL, CodRes)
+VALUES
+('BNOVVN68B69B55D', 'Vincenzo', 'Bianchi', 'M', '1968-06-09', 1),
+('BNCLCU92A01H501H', 'Luca', 'Bianchi', 'M', '1992-01-01', 1)
+
+//
+Inserimento delle residenze
+
+INSERT INTO Residenze (Via, NumCiv, CAP, Citta)
+VALUES
+('Via Roma', '10', '10121', 'Milano')
+
+////////
+SELECT
+
+//
+Seleziona
+
+SELECT *
+FROM Genitori G, Persone AS gen, Persone AS fig
+WHERE G.COdGenitore = gen.CodiceFiscale AND
+G.CodFiglio = fig. CodiceFiscale
+
+///////
+ESERCIZI
+
+//
+es B
+
+INSERT INTO alunni(cognome, nome, id_rappresentante, classe, media_voti) 
+VALUES
+	("Bianco","Alberto", 11, "4B", 7.2),
+	("Tallone","Fabio", 11, "4B", 7.9),
+	("Ghio","Elisabetta", 11, "4B", 6.7);
+
+
+//
+es C
+
+SELECT cognome, nome
+FROM alunni
+WHERE id_rappresentante IS NULL
+
+//
+es D
+
+SELECT a.cognome, a.nome, a.classe
+FROM alunni a, alunni rappre
+WHERE rappre.id = a.id_rappresentante AND
+rappre.id_rappresentante IS NULL AND
+a.media_voti > rappre.media_voti;
+
+//
+es E
+
+SELECT cognome, nome, classe
+FROM alunni
+WHERE alunni.media_voti BETWEEN 6 AND 7; --sempre incluso con il between
+
+//
+es G
+
+SELECT a.cognome, a.nome, a.classe
+FROM alunni a, alunni alunno
+WHERE (alunno.cognome = "Gardini" AND alunno.nome = "Ennio")
+AND a.media_voti < alunno.media_voti;
+
+//
+es H
+
+UPDATE alunni
+SET media_voti = media_voti + ( media_voti / 100 * 10)
+WHERE id_rappresentante IS NULL

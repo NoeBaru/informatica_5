@@ -1,0 +1,34 @@
+ID | cognome | nome | id_rappresentante | classe | media_voti
+
+INSERT INTO "main"."alunni" ("id", "cognome", "nome", "id_rappresentante", "classe", "media_voti")
+VALUES (1, 'colombo', 'pino', 4, '3B', 3.5),
+       (2, 'rossini', 'dario', 4, '3B', 6.4),
+       (3, 'gervasoni', 'lino', 4, '3B', 4.8),
+       (4, 'mastromatteo', 'mino', NULL, '3B', 6.9),
+       (5, 'mangioni', 'rino', 4, '3B', 7.1),
+       (6, 'costa', 'renzo', 11, '4B', 7.3),
+       (7, 'ronzini', 'sandro', 4, '3B', 7.5),
+       (8, 'sartori', 'antonio', 11, '4B', 4.5),
+       (9, 'deledda', 'grazia', 11, '4B', 5.9),
+       (10, 'gardini', 'ennio', 11, '4B', 6.3),
+       (11, 'delor', 'salvo', NULL, '5B', 6.9),
+       (12, 'gennari', 'miriam', NULL, '5B', 6.1),
+       (13, 'delfante', 'mario', 12, '5B', 5.8),
+       (14, 'celeste', 'maria', 12, '5B', 5.9),
+       (15, 'corti', 'stefano', 12, '5B', 6.3);
+
+--fare una query che scriva le colonne cognome e nome del rappresentante accanto alla tabella e tolga la colonna id_rappresentante quindi
+
+--mettere le maiuscole nel cognome e nel nome
+^ all'inizio
+$ alla fine
+
+
+"classe" REGEXP '^[1-5][A-Z]$'
+"nome" REGEXP '^[A-Z][a-z]+$'
+"cognome" REGEXP '^[A-Z][a-z]+$'
+
+"media_voti" BETWEEN 0 AND 10
+
+'1[A-Z][a-z]+'
+'1[1-5][A-Z]$'

@@ -1,0 +1,31 @@
+RIPASSO
+
+//per creare una tabella
+CREATE TABLE "tabella" (
+"colonna1" TIPO,
+"colonna2" TIPO NOT NULL,
+"colonna3" TIPO NOT NULL,
+PRIMARY KEY("colonna1" AUTOINCREMENT)
+);
+
+//per inserire dei check
+CREATE TABLE "SedeA" (
+"CodOperaio" TEXT NOT NULL,
+"Sesso" TEXT NOT NULL CHECK("Sesso" IN ('M', 'F')),
+"AssuntoIl" TEXT NOT NULL CHECK("AssuntoIl" LIKE '____-__-
+__'),
+"Stipendio" REAL NOT NULL DEFAULT 0 CHECK("Stipendio" >= 0),
+"CodR" INTEGER,
+FOREIGN KEY("CodR") REFERENCES "Responsabili"("CodResp"),
+PRIMARY KEY("CodOperaio")
+);
+
+////
+Quando si definisce una FK si può applicare l'integrità
+referenziale durante l'eliminazione (ON DELETE) o la modifica
+(ON UPDATE) della PK associata. Le possibili azioni viste sono:
+RESTRICT: SQLite return an error immediately if a parent key with
+dependent child keys is deleted or modified.
+
+CASCADE: A "CASCADE" action propagates the delete or update
+operation on the parent key to each dependent child key.
