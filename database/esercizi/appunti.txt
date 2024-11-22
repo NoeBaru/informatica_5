@@ -11,15 +11,24 @@ condizione di congiunzione: campi che uniscono le tabelle, necessari perché sen
 tupla: la riga di qualunque tabella
 grado: numero di colonne
 cardinalità: numero di righe
-istanza: insieme di tutte le righe e colonne (la tabella)
+istanza: insieme di tutte le righe e colonne (la tabella) 
 
-self join: join della stessa tabella con due alias diversi
-
-distinct: se ci possono essere due righe identiche lo metto, così non le ripete
+DISTINCT: se ci possono essere due righe identiche lo metto, così non le ripete
+INTERSECT: prende quello che c'è in comune (non si fa il comando INTERSECT perché molti db non lo supportano)
 
 X: peratore insiemistico tra tabelle (prodotto cartesiano)
-union: due tabelle con le stesse colonne vengono messe una sotto l'altra
--: quando c'è può essere NULL quindi non metto "NOT NULL"
+
+self join: join della stessa tabella con due alias diversi
+LEFT e RIGHT JOIN: right è inutile perché basta invertire e usare la left di nuovo
+MINUS: prende tutto e toglie i valori nulli(non si fa il comando MINUS perché molti db non lo supportano)
+-: tranne
+UNION o, INTERSECTION e: quali sono gli operai che lavorano nella sedeA o/e nella sedeB
+
+
+UNION: due tabelle con le stesse colonne vengono messe una sotto l'altra
+HAVING: la where di una funzione di aggregazione
+
+variabile-: quando c'è può essere NULL quindi non metto "NOT NULL"
 
 la tabella risultato del prodotto cartesiano avrà un grado uguale alla somma dei gradi delle tabelle di partenza (es.2x1 = 3)
 la cardinalità è il prodotto delle cardinalità delle tabelle iniziali
@@ -30,6 +39,9 @@ chiave esterna: tratteggio sotto o con asterisco
 chiave esterna comando:
 - ON UPDATE CASCADE ON DELETE SET NULL se il campo può essere nullo
 - ON UPDATE CASCADE ON DELETE RESTRICT 
+
+creo una tabella relazionale quando mi servono più dati di una tabella (n a n), invece che solo una colonna con l'id usando una chiave esterna
+(es- supereroe con armi)
 
 COMANDI:
 
@@ -178,3 +190,104 @@ $ alla fine
 "cognome" REGEXP '^[A-Z][a-z]+$'
 
 "media_voti" BETWEEN 0 AND 10
+
+//funzioni aggregazione
+
+MIN() minimo
+MAX() massimo
+COUNT() conta
+SUM() somma
+AVG() media
+
+//conta tutte le righe della tabella superhero
+SELECT COUNT(*)
+FROM superhero
+WHERE superhero_name LIKE "%bat%"
+
+//grouped by invece che union quando ne ho più di 2 o 3 
+SELECT COUNT(*) AS genderQuantity --conta tutte le righe della tabella superhero
+FROM superhero
+GROUP BY gender_id --raggruppa tutti i valori della colonna che sono uguali
+
+
+CON LA UNION AVREI FATTO:
+
+SELECT COUNT(*) --conta tutte le righe della tabella superhero
+FROM superhero
+WHERE gender_id = 1
+UNION
+SELECT COUNT(*) --conta tutte le righe della tabella superhero
+FROM superhero
+WHERE gender_id = 2
+
+
+//congiunzione con la JOIN
+SELECT campoX
+FROM tab1[INNER] JOIN tab2 --INNER posso ometterlo
+ON tab1.key1 = tab2.key2 --Al posto dell'ON si può usare USING(tab1.key1);
+
+--solo i film tratti da un romanzo
+SELECT *
+FROM romanzo as r, film as f
+WHERE r.codFilm = f.codFilm
+
+--tutti i film con anche il romanzo
+JOIN
+
+-- tutti i film e se hanno il romanzo meglio
+SELECT *
+FROM film
+LEFT JOIN romanzi
+ON r.codFilm = f.codFilm
+
+-- tutti i romanzi e solo i film tratti dai romanzi
+SELECT *
+FROM film
+RIGHT JOIN romanzi
+ON r.codFilm = f.codFilm
+
+--QUINDI per es.A SINISTRA (A e B) al CENTRO(C e D) a DESTRA (E e F)
+JOIN : prende c, d
+LEFT JOIN: a, b, c, d
+RIGHT JOIN: e, f, c, d
+FULL OUTER: a, b, c, d, e, f
+
+
+//INTERSECT
+
+--NO
+SELECT date
+FROM storeInfo
+INTERSECT
+SELECT date 
+FROM internetSales
+
+--SI
+SELECT DISTINCT s.date
+FROM storeInfo as s, internetSales as i
+WHERE (s.date = i.date)
+
+
+//MINUS
+
+--NO
+SELECT Date FROM StoreInfo
+MINUS
+SELECT Date FROM InternetSales
+
+--SI
+SELECT DISTINCT s.date
+FROM storeInfo AS s LEFT JOIN internetSales AS i
+ON (s.date = i.date)
+WHERE i.date IS NULL
+
+
+
+
+
+
+
+
+
+
+

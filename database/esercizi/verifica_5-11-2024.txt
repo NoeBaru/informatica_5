@@ -1,0 +1,69 @@
+//A1
+CREATE TABLE romanzi(
+	codR INTEGER,
+	titolo VARCHAR(30) NOT NULL CHECK("titolo" REGEXP "^[A-Z][a-z]+$"),
+	codAut INTEGER NOT NULL, 
+	anno INTEGER NOT NULL CHECK(anno <= year(CURRENT_DATE)),
+	prezzo DECIMAL(10, 2) NOT NULL CHECK (prezzo < 0),
+	genere VARCHAR(20) NOT NULL CHECK (genere IN "rosa", "gialli", "horror", "storico"), 
+	PRIMARY KEY(cod, AUTOINCREMENT),
+	FOREIGN KEY codAut REFERENCES autori(codA) ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+CREATE TABLE autori(
+	codA INTEGER,
+	nomeAut VARCHAR(20) NOT NULL CHECK("titolo" REGEXP "^[A-Z].+$"),
+	cognomeAut VARCHAR(20) NOT NULL CHECK("titolo" REGEXP "^[A-Z].+$"),
+	natoIl DATE NOT NULL CHECK(anno <= (CURRENT_DATE)), 
+	mortoIl DATE CHECK("mortoIl" > "natoIl"),
+	nazione VARCHAR(3) NOT NULL CHECK(nazione IN "ITA", "UK", "FR", "ESP", "USA"), 
+	PRIMARY KEY(codA, AUTOINCREMENT)
+);
+
+//A2
+CREATE VISTA femme AS
+	SELECT r.titolo, p.nomeP
+	FROM romanzi as r, autori as a, personaggi as p
+	WHERE a.codA = r.codAut AND r.codR = p.codiceR AND sesso = "F" AND nazione != "ITA" AND mortoIl IS NULL
+	ORDER by titolo
+
+//A3
+UPDATE romanzi
+SET prezzo = prezzo * 1,22
+WHERE anno < 2015
+
+//A4
+CREATE TABLE "Elenco" AS
+SELECT a.Nazione, a.NomeAut, a.CognAut, YEAR(CURRENT_DATE) - YEAR (a.NatoIl) AS eta
+FROM autori AS a, romanzi AS r
+WHERE a.CodA = r.CodAut
+AND r.Genere IN ("gialli", "storico") AND a.MortoIl IS NULL
+ORDER BY a.Nazione
+
+//A5
+SELECT Titolo, Anno, "film" AS tipo --nell'intestazione della colonna c'è il tipo film
+FROM film
+WHERE CodiceR IS NULL
+UNION
+SELECT Titolo AS Titolo, Anno, "romanzi" AS tipo
+FROM romanzi
+ORDER BY Titolo
+
+OUTPUT:
+titolo			| 	anno	| tipo
+Fast & Furious  	| 	2020 	| film
+il signore degli anelli |	2006	| romanzi
+
+//B1
+SELECT f.NomeProp, f.NomeGen, m.NomeProp AS "nome madre"
+FROM Animale AS f, Animale AS m
+WHERE f.IdMadre = m.Ident
+AND f.Specie = "mammifero"
+ORDER BY f.Peso DESC
+
+//B2
+SELECT DISTINCT m.NumGabbia, Zona
+FROM Gabbia AS g, Animale AS f, Animale AS m
+WHERE f.IdMadre = m.Ident
+AND m.Gab = g.NumGabbia
+AND g.NumGabbia = f.gab

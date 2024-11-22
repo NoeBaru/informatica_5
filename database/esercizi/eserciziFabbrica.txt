@@ -32,6 +32,25 @@ UPDATE sedeA
 SET stipendio = stipendio + 30
 WHERE codR = 1 OR codR = 2;
 
+
+///////////
+
+ES6
+SELECT * FROM SedeA
+INTERSECT
+SELECT * FROM SedeB;
+
+///////////
+
+ES7
+SELECT * FROM SedeA
+UNION
+SELECT * FROM SedeB;
+
+///////////
+
+ES8
+
 ///////////
 
 ES10
@@ -130,3 +149,89 @@ SELECT CodOperaio, AssuntoIl
 FROM SedeB, responsabili
 WHERE CodR = codResp AND Nome = 'Maria' AND Cognome = 'Fassa'
 ORDER BY AssuntoIl ASC;
+
+////////////
+
+ES28
+--Lo stipendio massimo degli operai della sede A, quello minimo e quello medio
+SELECT MAX(stipendio) AS maxStipendio, MIN(stipendio) AS minStipendio, AVG(stipendio) AS mediaStipendo
+FROM sedeA
+WHERE sesso = 'M'
+
+////////////
+
+ES29
+--Contare gli operai/e della sede B con responsabile di codice X inserito da tastiera
+SELECT COUNT(*) AS numResp3 --conta le righe non nulla, quindi si fa prima a mettere * se sono sicura che non ci siano nulli
+FROM sedeB
+WHERE codR = 3
+
+////////////
+
+ES30
+--Contare le operaie della sede A con responsabile il cui nome e cognome viene inserito da tastiera
+SELECT COUNT(*) AS numoOperaieCercate
+FROM sedeA, responsabili
+WHERE sesso = 'F'
+AND codR = codResp
+AND cognome LIKE "%Fassa%"
+AND nome LIKE "%Maria%"
+
+////////////
+
+ES31
+--per ogni responsabile della sede B elencare il numero di operai/e e lo stipendio medio
+SELECT COUNT(*) AS numOpResp1, AVG(stipendio)
+FROM sedeB
+WHERE codR = 1
+UNION
+SELECT COUNT(*) AS numOpResp2, AVG(stipendio)
+FROM sedeB
+WHERE codR = 2
+UNION
+SELECT COUNT(*) AS numOpResp3, AVG(stipendio)
+FROM sedeB
+WHERE codR = 3
+
+SELECT cognome, nome, COUNT(*) AS numOpResp, AVG(stipendio)
+FROM sedeB, responsabili
+WHERE codR = codResp
+GOURP BY cognome, nome, codResp
+
+////////////
+
+ES32
+--per ogni stipendio elencare il numero di operai/e della sede A
+SELECT COUNT(*)
+FROM sedeA
+GROUP BY stipendio 
+
+////////////
+
+ES33
+--elenco degli operai della sede A in ordine decrescente di assunzione che hanno come responsabile “Lerda Ivo”
+SELECT codOperaio
+FROM sedeA, responsabili
+WHERE codR = codResp
+AND cognome LIKE "%Lerda%" AND nome LIKE "%Ivo%"
+ORDER BY assuntoIl DESC
+
+////////////
+
+ES34
+--il numero e lo stipendio massimo delle operaie della sede B il cui responsabile è inserito da tastiera (cognome e nome) (fai la tabella per “Dutto Luca”)
+SELECT COUNT(stipendio) AS numStipendi, MAX(stipendio) AS maxStipendio
+FROM sedeB, responsabili
+WHERE codR = codResp
+AND cognome LIKE "%Dutto%"
+AND nome LIKE "%Luca%"
+AND sesso = 'F'
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+ESERCIZI OLYMPICS
+
+//////////////
+ES1
+-- elenco delle città in cui si sono svolte le olimpiadi invernali in ordine di tempo
+
+games_year | city_name | season
+2006       | Torino    | WInter
+
+SELECT city_name, games_year, season
+FROM city c, games g, games_city
+WHERE c.id = games_id
+AND g.id = games_id
+AND season LIKE "%winter%"
+ORDER BY games_year
+
+//////////////
+ES2
+--per ogni paese indicare il numero totale di atleti olimpionici ordinando in ordine alfabetico
+
+es con dati casuali:
+Italia | 3456
+
+SELECT region_name, COUNT(*) as conteggio
+FROM noc_region, person_region, person
+WHERE noc_region.id = person_region.region_id
+AND person_region.person_id = person.id
+AND noc_region.region_name LIKE "%ita%"
+GROUP BY noc_region.id
+ORDER BY conteggio
+
+//////////////
+ES3
+--visualizzare gli atleti italiani che hanno partecipato alle olimpiadi invernali di Torino 2006
+
+SELECT p.full_name as nome_atleta
+FROM person p, person_region pr, noc_region r, games g, games_city gc, city c, games_competitor gcomp
+WHERE
+AND
+AND
+AND
+
+//////////////
+ES4
+--visualizzare la classifica delle nazioni che hanno vinto più ori
+
+SELECT
+FROM 
+WHERE
+GROUP BY
+ORDER BY

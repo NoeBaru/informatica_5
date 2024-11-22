@@ -16,3 +16,41 @@ AND superhero.skin_colour_id = c_skin.id
 AND superhero.race_id = race.id
 AND superhero.publisher_id = publisher.id
 AND superhero.alignment_id = alignment.id
+
+--cercare la quantità dei vari generi e a cosa corrisponde
+SELECT COUNT(*) AS genderQuantity, g.gender as genderName
+FROM superhero AS s, gender AS g
+WHERE s.gender_id = g.id
+GROUP BY s.gender_id --raggruppa tutti i valori della colonna che sono uguali
+
+--cercare la quanittà dei diversi colori degli occhi
+SELECT COUNT(*) AS eyesQuantity, c.colour as colourName
+FROM superhero AS s, colour AS c
+WHERE s.eye_colour_id = c.id
+GROUP BY s.eye_colour_id --raggruppa tutti i valori della colonna che sono uguali
+
+--cercare la somma dei pesi dei diversi spiderman
+SELECT SUM(weight_kg) AS totKg
+FROM superhero AS s
+WHERE s.superhero_name LIKE "%spider%"
+
+--visualizzare il totale dei kg per ogni razza
+SELECT r.race as raceName, SUM(weight_kg) AS totKg
+FROM superhero AS s, race AS r
+WHERE s.race_id = r.id
+GROUP BY s.race_id
+
+--visualizzare la media delle altezze di tutti i superhero
+SELECT s.superhero_name as superheroName, AVG(height_cm) AS mediaAltezze
+FROM superhero AS s, race AS r
+WHERE s.race_id = r.id
+GROUP BY s.race_id
+
+--visualizzare la media delle altezze di tutti i Saiyan
+SELECT s.superhero_name as superheroName, AVG(height_cm) AS mediaAltezze
+FROM superhero AS s, race AS r
+WHERE s.race_id = r.id AND r.race LIKE "%saiyan%"
+GROUP BY s.race_id
+
+
+--creare la tabella armi e mettere 5 armi a caso, attribuendole ai supereroi
