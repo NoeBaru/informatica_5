@@ -109,6 +109,45 @@ SELECT Nazionalita
 FROM film;
 
 /////////////////
+ES11
+--il titolo dei film in cui recitano M.Mastroianni e S.Loren
+SELECT titolo
+FROM film f, recita r, attori a
+WHERE f.codFilm = r.codFilm
+AND a.codAttore = r.codAttore
+AND a.nome LIKE "%Marcello Mastroianni%"
+AND titolo IN ( --tanti valori, quindi non faccio =
+	SELECT titolo
+	FROM film f, recita r, attori a
+	WHERE f.codFilm = r.codFilm
+	AND a.codAttore = r.codAttore
+	AND a.nome LIKE "%Sophia Loren%")
+
+OTTIMIZZO COSì:
+
+SELECT titolo
+FROM film f, recita r, attori a
+WHERE f.codFilm = r.codFilm
+AND a.codAttore = r.codAttore
+AND a.nome LIKE "%Marcello Mastroianni%"
+AND f.codFilm IN ( --tanti valori, quindi non faccio =
+	SELECT r.codFilm
+	FROM recita r, attori a
+	WHERE a.codAttore = r.codAttore
+	AND a.nome LIKE "%Sophia Loren%")
+
+/////////////////
+ES12
+--il titolo dei film dello stesso regista di "Casablanca"
+SELECT titolo
+FROM film
+WHERE titolo <> "Casablanca" AND regista = 
+	(SELECT regista
+	FROM film
+	WHERE titolo LIKE "%Casablanca%")
+ORDER BY titolo
+
+/////////////////
 
 ES13
 -- Il numero di sale di Pisa con più di 60 posti
@@ -292,6 +331,114 @@ AND sale.codSala = proiezioni.codSala
 AND strftime('%Y', proiezioni.dataProiezione) = "2005"
 AND strftime('%m', proiezioni.dataProiezione) = "01"
 
+/////////////////
+ES28
+--i titoli dei film che non sono mai stati proiettati a Pisa
+SELECT titolo
+FROM film
+WHERE codFilm NOT IN ( --tanti valori, quindi non faccio <> (diverso)
+	SELECT DISTINCT p.codFilm
+	FROM sale s, proiezioni p
+	WHERE s.codSala = p.codSala
+	AND s.citta LIKE "%Pisa%")
+
+/////////////////
+ES29
+--i titoli dei film che sono stati proiettati solo a Pisa
+SELECT titolo
+FROM film f, poriezioni p, sale s
+WHERE f.codFilm = p.codFilm
+AND s.codSala = p.codSala
+AND s.citta LIKE "%Pisa%" AND f.codFilm NOT IN ( --tanti valori, quindi non faccio <> (diverso)
+	SELECT DISTINCT p.codFilm
+	FROM sale s, proiezioni p
+	WHERE s.codSala = p.codSala
+	AND s.citta LIKE "%Pisa%")
+
+non corretto
+
+///////////////////
+ES30
+--I titoli dei film dei quali non vi è mai stata una proiezione con incasso superiore a 500 €
+
+SELECT f.titolo
+FROM film f
+WHERE f.codFilm NOT IN (
+    SELECT DISTINCT p.codFilm
+    FROM proiezioni p
+    WHERE p.incasso > 500
+);
+
+///////////////////
+ES31
+--i titoli dei film le cui proiezioni hanno sempre ottenuto un incasso superiore a 500 €
+
+SELECT DISTINCT f.titolo
+FROM film f
+WHERE f.codFilm NOT IN (
+    SELECT DISTINCT p.codFilm
+    FROM proiezioni p
+    WHERE p.incasso <= 500
+);
+
+///////////////////
+ES32
+--il nome degli attori italiani che non hanno mai recitato in film di Fellini
+
+SELECT a.nome
+FROM attori a
+WHERE a.nazionalita = 'ITA'
+AND a.codAttore NOT IN (
+    SELECT r.codAttore
+    FROM recita r
+    JOIN film f ON r.codFilm = f.codFilm
+    WHERE f.regista = 'Fellini'
+);
+
+///////////////////
+ES33
+--il titolo dei film di Fellini in cui non recitano attori italiani
+
+SELECT f.titolo
+FROM film f
+WHERE f.regista = 'Fellini'
+AND f.codFilm NOT IN (
+    SELECT r.codFilm
+    FROM recita r
+    JOIN attori a ON r.codAttore = a.codAttore
+    WHERE a.nazionalita = 'ITA'
+);
+
+///////////////////
+ES34
+--il titolo dei film senza attori
+
+SELECT f.titolo
+FROM film f
+WHERE f.codFilm NOT IN (
+    SELECT r.codFilm
+    FROM recita r
+);
+
+///////////////////
+ES35
+--gli attori che prima del 1960 hanno recitato solo nei film di Fellini
+
+SELECT a.nome
+FROM attori a
+WHERE a.codAttore IN (
+    SELECT r.codAttore
+    FROM recita r
+    JOIN film f ON r.codFilm = f.codFilm
+    WHERE f.annoProd < 1960 AND f.regista = 'Fellini'
+)
+AND a.codAttore NOT IN (
+    SELECT r.codAttore
+    FROM recita r
+    JOIN film f ON r.codFilm = f.codFilm
+    WHERE f.annoProd < 1960 AND f.regista != 'Fellini'
+);
+
 //////////////////
 ES37
 --Elenco degli attori che sono anche registi
@@ -305,6 +452,24 @@ ES38
 SELECT DISTINCT attori.nome
 FROM attori LEFT JOIN film ON attori.nome = film.regista
 WHERE film.regista IS NULL
+
+
+///////////////////
+--il film che ha incassato di più in una proiezione
+
+SELECT f.titolo, max(incasso) as incassoMax
+FROM film f, proiezioni p
+WHERE f.codFilm = p.codFilm
+GROUP BY f.codFilm, titolo
+ORDER BY incassoMax DESC limit 3 --fa vedere solo i primi 3
+
+OPPPURE FORSE
+
+SELECT f.titolo, max(incasso) as incassoMax
+FROM proiezioni
+WHERE incasso = (
+	SELECT max(incasso) as incassoMax
+	FROM proiezioni);
 
 
 

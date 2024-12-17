@@ -1,0 +1,59 @@
+ES1
+-- Il titolo dei romanzi del 19° secolo
+SELECT
+FROM
+WHERE
+
+/////////////////////
+ES2
+-- Il titolo, l’autore e l’anno di pubblicazione dei romanzi di autori russi, ordinati per autore e, per lo stesso autore, ordinati per anno di pubblicazione
+SELECT
+FROM
+WHERE
+
+/////////////////////
+ES3
+-- I personaggi principali (ruolo =”P”) dei romanzi di autori viventi.
+SELECT
+FROM
+WHERE
+
+/////////////////////
+ES4
+-- I romanzi dai quali è stato tratto un film con lo stesso titolo del romanzo
+SELECT
+FROM
+WHERE
+
+/////////////////////
+ES5
+-- Il titolo, il regista e l’anno dei film tratti dal romanzo “Robin Hood”
+SELECT
+FROM
+WHERE
+
+/////////////////////
+ES6
+-- Per ogni autore italiano, l’anno del primo e dell’ultimo romanzo.
+	A. Per ogni romanzo indicare quanti personaggi maschili e femminili sono presenti
+	B. Il numero di autori vivi e morti divisi per nazione, ordinati in ordine decrescent rispetto al totale degli autori nella nazione
+	C. Elenco alfabetico degli autori e dei loro romanzi e dell'anno dell'eventuale film tratto dal romanzo
+	D. Elenco alfabetico degli autori e dei loro romanzi e numero dei film
+
+SELECT
+FROM
+WHERE
+
+/////////////////////
+ES7
+-- I nomi dei personaggi che compaiono in più di un romanzo, ed il numero dei romanzi nei quali compaiono
+SELECT
+FROM
+WHERE
+
+/////////////////////
+ES8
+-- I romanzi di autori italiani dai quali è stato tratto più di un film
+SELECT
+FROM
+WHERE

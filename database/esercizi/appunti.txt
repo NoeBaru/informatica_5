@@ -282,8 +282,19 @@ ON (s.date = i.date)
 WHERE i.date IS NULL
 
 
+////////////
+LE SUBQUERY (slide 54 circa)
 
+risultato: o zero o un solo valore o più
 
+operatori di confronti:
+si fa scrivendo WHERE campo > ANY campo
+
+- ANY: almeno uno
+- ALL: tutti
+- EXISTS:
+- IN: equivale a dire any, quindi almeno uno
+- NOT IN: 
 
 
 

@@ -1,0 +1,80 @@
+ES2
+
+CREATE TABLE "person_cachet" (
+	"movie_id"	INTEGER NOT NULL,
+	"person_id"	INTEGER NOT NULL,
+	"cachet"	INTEGER,
+	PRIMARY KEY("movie_id","person_id"),
+	FOREIGN KEY("movie_id") REFERENCES "movie"("movie_id") ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY("person_id") REFERENCES "person"("person_id") ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+ESEMPIO DI INSERT A SCELTA
+INSERT INTO "person_cachet"("person_id", "movie_id", "cachet")
+VALUES (114, 285, 300);
+
+///////////////////////////////////////////////////////////////////////////
+ESERCIZIO 3
+
+--1) Elencare tutti i titoli dei famosissimi film prodotti in Kazakhstan
+
+SELECT title
+FROM movie as m, production_country as pc, country as c
+WHERE m.movie_id = pc.movie_id 
+AND pc.country_id = c.country_id
+AND c.country_name LIKE "%kazakhstan%";
+
+////////////////
+
+--2) Elencare gli attori che hanno recitato in un film che parli di “vampires” (nel campo overview) tra il 2003 e il 2005
+
+SELECT p.person_name, mc.person_id, m.overview
+FROM movie as m, movie_cast as mc, person as p
+WHERE mc.movie_id = m.movie_id
+AND mc.person_id = p.person_id
+AND YEAR(release_date) = YEAR(BETWEEN 2003 AND 2005)
+AND m.overview LIKE "%vampires%"
+
+////////////////
+
+--3) Elencare il nome reale, il nome del personaggio interpretato e il nome del film di tutte le attrici.
+
+SELECT p.person_name, mc.character_name, m.title
+FROM person as p, movie_cast as mc, movie as m, gender as g
+WHERE mc.movie_id = m.movie_id 
+AND mc.person_id = p.person_id
+AND mc.gender_id = g.gender_id
+AND mc.gender_id = 1
+
+////////////////
+
+--4) Per ogni Compagnia di produzione cinematografica stampare la somma dei budget spesi per tutti i film
+
+SELECT pc.company_name, SUM(m.budget) as totBudget
+FROM movie as m, production_company as pc, movie_company as mc
+WHERE mc.movie_id = m.movie_id
+AND mc.company_id = pc.company_id
+GROUP BY pc.company_name
+
+////////////////
+
+--5) Per la saga “Pirates of the Caribbean” stampare l’elenco degli attori che hanno recitato almeno in due film
+
+SELECT m.title, p.person_name
+FROM movie as m, person as p, movie_cast as mc
+WHERE m.title LIKE "%Pirates of the Caribbean%"
+AND mc.movie_id = m.movie_id
+AND mc.company_id = pc.company_id
+GROUP BY MC.person_id
+HAVING COUNT(mc.movie_id) >= 2
+
+////////////////
+
+--6) Visualizzare la classifica dei Generi dei film con più voti raccolti
+
+SELECT g.genre_id, m.voto_average
+FROM genre as g, movie as m, movie_genres as mg
+WHERE g.gendre_id = mg.gendre_id
+AND m.movie_id = mg.movie_id
+GROUP BY genre_id
+ORDER BY m.voto_average DESC

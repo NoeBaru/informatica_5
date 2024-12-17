@@ -1,0 +1,81 @@
+/////////////
+ES5
+--Per ciascuna Assicurazione, il nome, la sede ed il numero di auto assicurate
+SELECT ass.nome, ass.sede, COUNT(*) as autoAssicurate
+FROM ASSICURAZIONI AS ass, AUTO AS a
+WHERE ass.codAss = a.codAss
+GROUP BY ass.nome, ass.sede, ass.codAss
+
+/////////////
+ES6
+--Per ciascuna assicurazione, il numero di auto rimborsate e il numero di quelle non rimborsate
+SELECT ASSICURAZIONI.nome as Assicurazione, COUNT(AUTOCOINVOLTE.DataRimborso) as AutoRimborsate, COUNT(*) - COUNT(AUTOCOINVOLTE.dataRimborso) AS AutoRimborsate
+FROM ASSICURAZIONI, AUTO, ATUCOINVOLTE
+WHERE ASSICURAZIONI.codAss = AUTO.codAss
+AND AUTO.targa = AUTOCOINVOLTE.targa
+GROUP BY ASSICURAZIONI.nome, ASSICURAZIONI.codAss
+
+/////////////
+ES7
+--Per ciascuna auto “Fiat”, la targa dell’auto ed il numero di sinistri in cui è stata coinvolta
+SELECT a.targa, COUNT(*) as nSinistri
+FROM AUTO as a, ASSICURAZIONI as ac
+WHERE a.targa = ac.targa
+AND a.marca LIKE "%Fiat%"
+GROUP BY a.targa
+
+/////////////
+ES8
+--Per ciascuna auto coinvolta in più di un sinistro, la targa dell’auto, il nome dell’Assicurazione ed il totale dei danni riportati, in ordine decrescente di sinistri subiti
+SELECT a.targa, ass.nome, SUM(ac.importoDelDanno) as totDanni, COUNT(*) as nSinistri
+FROM AUTO as a, ASSICURAZIONI as ass, AUTOCOINVOLTE as ac
+WHERE a.targa = ac.targa
+AND a.codAss = ass.codAss
+GROUP BY a.targa, ass.nome
+HAVING nSinistri > 1
+ORDER BY nSinistri DESC
+
+/////////////
+ES9
+--Crea la view RICCHI con CF e Nome di coloro che possiedono più di un’auto per cui è stato risarcito il danno e totale dell’importo dei danni risarciti in ordine alfabetico di Nome
+CREATE VIEW RICCHI AS
+SELECT a.cf, p.nome, COUNT(DISTINCT a.targa) AS nAuto, SUM(ac.importoDanno) AS totDanni
+FROM AUTO AS a, AUTOCOINVOLTE AS ac, PROPRIETARI AS p
+WHERE a.targa = ac.targa
+AND a.codF = p.codF
+AND ac.dataRimborso NOT NULL
+HAVING nAuto > 1
+ORDER BY p.nome
+
+/////////////
+ES14
+--Elenco delle località che sono o luogo di un sinistro o residenza di un proprietario
+SELECT SINISTRI.Località AS Localita
+FROM SINISTRI
+UNION
+SELECT PROPRIETARI.Residenza AS Localita
+FROM PROPRIETARI
+
+/////////////
+ES15
+--Elenco delle località che sono luogo di un sinistro e anche residenza di un proprietario
+SELECT DISTINCT SINISTRI.Località AS Localita
+FROM SINISTRI, PROPRIETARI
+WHERE SINISTRI.Località = PROPRIETARI.Residenza
+
+/////////////
+ES16
+--
+CREATE TABLE PERICOLOSE AD 
+SELECT SINISTRI.Località AS Localita, COUNT(*) AS NumeroIncidenti, SUM(AUTOCOINVOLTE.ImportoDelDanno) AS totaleDanni
+FROM SINISTRI, AUTOCOINVOLTE
+WHERE AUTOCINVOLTE.DataRimborso = 
+/////////////
+ES17
+--Elenco delle località che sono luogo di sinistro, ma non sono residenza di nessun proprietario.
+SELECT DISTINCT SINISTRI.Località AS Localita
+FROM SINISTRI
+LEFT JOIN PROPRIETARI ON SINISTRI.Località = PROPRIETARI.Residenza
+
+
+
