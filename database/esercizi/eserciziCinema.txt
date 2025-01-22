@@ -440,6 +440,22 @@ AND a.codAttore NOT IN (
 );
 
 //////////////////
+ES36
+--Gli attori che hanno recitato in film di Fellini solo prima del 1960
+
+SELECT DISTINCT a.nome
+FROM attori a
+JOIN recita r ON a.codAttore = r.codAttore
+JOIN film f ON r.codFilm = f.codFilm
+WHERE f.regista = 'Fellini' AND f.annoProd < 1960
+EXCEPT
+SELECT DISTINCT a.nome
+FROM attori a
+JOIN recita r ON a.codAttore = r.codAttore
+JOIN film f ON r.codFilm = f.codFilm
+WHERE f.regista = 'Fellini' AND f.annoProd >= 1960;
+
+//////////////////
 ES37
 --Elenco degli attori che sono anche registi
 SELECT DISTINCT attori.nome
@@ -453,6 +469,18 @@ SELECT DISTINCT attori.nome
 FROM attori LEFT JOIN film ON attori.nome = film.regista
 WHERE film.regista IS NULL
 
+///////////////////
+ES39
+--elenco dei registi che hanno fatto più film
+
+SELECT regista, COUNT(*) AS numFIlm
+FROM film
+GROUP BY regista
+HAVING numFilm = (
+	SELECT MAX(numFilm) as max
+	FROM (SELECT COUNT(*) AS numFIlm
+		FROM film
+		GROUP BY regista));
 
 ///////////////////
 --il film che ha incassato di più in una proiezione

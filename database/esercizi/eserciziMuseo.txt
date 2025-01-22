@@ -77,3 +77,59 @@ WHERE artisti.nazionalita = "ITA" AND musei.citta = "Londra"
 AND personaggi.personaggio LIKE "%Madonna%"
 AND opere.codA = artisti.codA
 AND opere.codM = musei.codM
+
+///////////////
+ES13
+--Il nome dei musei di Londra che non conservano opere di Tiziano
+SELECT m.nomeM
+FROM musei m
+WHERE  m.citta = "Londra"
+AND m.codM NOT IN
+(	SELECT m.codM
+	FROM musei m, opere o, artisti a
+	WHERE o.codm = m.codM
+	AND o.codA = a.codA
+	AND m.citta = "Londra"
+	AND a.nomeA = "Tiziano")
+
+///////////////
+ES14
+--Il nome dei musei di Londra che conservano solo opere di Tiziano
+SELECT m.nomeM
+FROM musei m
+WHERE  m.citta = "Londra"
+AND m.codM NOT IN
+(	SELECT m.codM
+	FROM musei m, opere o, artisti a
+	WHERE o.codm = m.codM
+	AND o.codA = a.codA
+	AND m.citta = "Londra"
+	AND a.nomeA <> "Tiziano")
+
+///////////////
+ES18
+--Per le opere di artisti italiani che non hanno personaggi, il titolo dell’opera ed il nome dell’artista
+SELECT o.titolo, a.nomeA
+FROM
+WHERE 
+AND m.codM NOT IN
+(	SELECT o.titolo, a.nomeA
+	FROM personaggi p, opere o, artisti a
+	WHERE o.codice = p.codice
+	AND o.codA = a.codA
+	AND p.personaggi IS NULL)
+
+///////////////
+ES19
+--Il nome dei musei di Londra che non conservano opere di artisti italiani, eccettuato Tiziano
+SELECT m.nomeM
+FROM musei m
+WHERE  m.citta = "Londra"
+AND m.codM IN
+(	SELECT m.codM
+	FROM musei m, opere o, artisti a
+	WHERE o.codm = m.codM
+	AND o.codA = a.codA
+	AND m.citta = "Londra"
+	AND a.nomeA <> "Tiziano"
+	AND a.nazionalita = "ITA")

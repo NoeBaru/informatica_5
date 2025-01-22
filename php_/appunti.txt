@@ -1,0 +1,7 @@
+inizio il codice con <?php e finisco con ?>
+
+include: copia ed incolla di tutto ciò che è presente nel file presente nel path come parametro. Se sbaglio non da errori, semplicemente non visualizza quello che dovrebbe
+include_once: include solo una volta il file nella pagina
+require: include, ma se non c'è il file, graficamente appare e restituisce un errore a video. Lo utilizzeremo nella connessione al db
+
+nel browser: http://127.0.0.1/accessoRiservato/
