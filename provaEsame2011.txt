@@ -1,0 +1,78 @@
+PROVA D'ESAME 2011 (vedi tablet)
+
+RESP (id, telefono, nome, cognome)
+PARCHI (codice, nome, via, citta, provincia, regioneV, codResp*)
+ANIMALI (codice, descrizione, sesso, saluteV, anzianitaV, annonascita-, codSpecie*, codParco*)
+SPECIE (codice, nome, rischioestinzione, ordineV)
+PIANTE (codice, categoriaV, specie, stagionefioritura-, descrizione-)
+PARCO_HA_PIANTA (codPianta*, codParco*, mq-)
+
+MAPPING
+RESP (id, telefono, nome, cognome, username, password)
+PARCHI (codice, nome, via, citta, provincia, regioneV, codResp*)
+ANIMALI (codice, descrizione, sesso, saluteV, anzianitaV, annonascita-, codSpecie*, codParco*)
+SPECIE (codice, nome, rischioestinzione, ordineV)
+PIANTE (codice, categoriaV, specie, stagionefioritura-, descrizione-)
+PARCO_HA_PIANTA (codPianta*, codParco*, mq-)
+
+
+CREATE TABLE
+
+CREATE TABLE RESP (
+    id INT AUTOINCREMENT PRIMARY KEY,
+    telefono CHAR(10) NOT NULL CHECK(telefono REGEXP ‘^[0-9]{6,10}$’)
+    Nome VARCHAR(20) NOT NULL,
+    Cognome VARCHAR(20) NOT NULL,
+    Username VARCHAR(20) NOT NULL,
+    Password VARCHAR(128) NOT NULL
+)
+
+CREATE TABLE PARCHI (
+    codice INT AUTOINCREMENT PRIMARY KEY,
+    nome VARCHAR(20) NOT NULL,
+    Via VARCHAR(20) NOT NULL,
+    Citta VARCHAR(20) NOT NULL,
+    Provincia CHAR(2) NOT NULL,
+    regione VARCHAR(20) NOT NULL CHECK(regione IN(‘Piemonte’, ‘Liguria’, ‘Toscana’, …))
+    codResp INT NOT NULL,
+    FOREIGN KEY (codResp) REFERENCES RESP(id) ON UPDATE CASCADE ON DELETE RESTRICT
+)
+
+CREATE TABLE ANIMALI (
+    codice INT AUTOINCREMENT PRIMARY KEY,
+    descrizione VARCHAR(200) NOT NULL,
+    sesso CHAR(1) CHECK (sesso IN ('M', 'F')) NOT NULL,
+    salute CHAR(1) CHECK (salute IN ('O', 'A', 'B')) NOT NULL,
+    anzianità CHAR(1) CHECK (anzianità IN ('C', 'A')) NOT NULL,
+    annonascita INTEGER CHECK(annonascita <= YEAR(CURRENT_DATE)),
+   codSpecie INT NOT NULL,
+    codParco INT NOT NULL,
+    FOREIGN KEY (codSpecie) REFERENCES SPECIE(codice) ON UPDATE CASCADE ON DELETE RESTRICT 
+    FOREIGN KEY (codParco) REFERENCES PARCHI(codice) ON UPDATE CASCADE ON DELETE RESTRICT
+)
+
+CREATE TABLE SPECIE (
+    codice AUTOINCREMENT PRIMARY KEY,
+    nome VARCHAR(20) NOT NULL,
+    rischioestinzione BOOLEAN NOT NULL,
+    Ordine VARCHAR(10) CHECK(ordine IN(‘mammiferi’, ‘rettili’, …)
+)
+
+CREATE TABLE PIANTE (
+    codice INT AUTOINCREMENT PRIMARY KEY,
+    categoria VARCHAR(20) NOT NULL,
+    Specie VARCHAR(20) NOT NULL,
+    stagioneI BOOLEAN NOT NULL,
+    stagioneP BOOLEAN NOT NULL,
+    stagioneE BOOLEAN NOT NULL,
+    stagioneA BOOLEAN NOT NULL,
+    descrizione VARCHAR(200),
+)
+
+CREATE TABLE PARCO_HA_PIANTA (
+    codPianta INT AUTOINCREMENT PRIMARY KEY,
+    codParco INT AUTOINCREMENT PRIMARY KEY,
+    mq DOUBLE CHECK(mq > 0)
+    FOREIGN KEY (codPianta) REFERENCES PIANTE(codice) ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY (codParco) REFERENCES PARCHI(codice) ON UPDATE CASCADE ON DELETE RESTRICT
+)

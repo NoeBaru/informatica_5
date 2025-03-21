@@ -1,0 +1,89 @@
+
+ESERCIZIO 1
+SELECT codF, Nme, AVG(prezzo), MIN(prezzo), COUNT(percSconto)
+FROM magazzino1 m1, fornitori f
+WHERE m1.codF = f.codF
+GROUP BY codF, nome
+
+OUTPUT:
+corretto
+
+ESERCIZIO 2
+SELECT categoria, codA, prezzo, prezzo - (prezzo*percSconto/100) as prezzoScontato
+FROM magazzino1
+UNION
+SELECT categoria, codA, prezzo, prezzo - (prezzo*percSconto/100) as prezzoScontato
+FROM magazzino2
+order by categoria, prezzo DESC
+
+OUTPUT:
+categoria in ordine alfabetico (se ci sono codici diversi viene scritto più volte), i prezzi in ordine decrescente
+
+ESERCIZIO 3
+SELECT *
+FROM magazzino1 LEFT JOIN magazzino2 ON codA
+WHERE magazzino2.codA IS NULL
+UNION
+SELECT *
+FROM magazzino2 LEFT JOIN magazzino1 ON codA
+WHERE magazzino1.codA IS NULL
+
+OUTPUT:
+ordinata rispetto a codF
+
+B
+ESERCIZIO 1
+SELECT AVG(YEAR(current_date()) - YEAR(natoIl) as eta
+FROM degenti
+WHERE peso IS NULL
+
+ESERCIZO2
+SELECT cognome, nome
+FROM degenti
+WHERE peso IS NULL and id NOT IN(
+	SELECT DISTINCT idMadre
+	FROM madri)
+
+ESERCIZIO 3
+SELECT COUNT(*)
+FROM degenti
+WHERE (NOME <> "Lucia" OR cogn <> "Rossi")
+AND stanzaDeg = (SELECT stazadeg
+		FROM degenti
+		WHERE nome = "Lucia" AND cognome = "Rossi")
+
+ESERCIZIO 4
+SELECT m.cognome, m.nome
+FROM degenti m, madri, degenti f
+WHERE m.peso IS NULL AND idMadre = m.id AND idFiglio = f.id
+AND YEAR(f.natoIl = YEAR(CURRENT_DATE)
+AND MONTH(f.natoIl) = MONTH(CURRENT_DATE)
+GROUP BY m.id, m.cognome, m.nome
+HAVING COUNT(*) >= 2
+
+ESERCIZIO 5
+SELECT peso
+FROM degenti, madri
+WHERE (idFiglio = id) AND (nome <> "Luca" OR cognome <> "Bianchi")
+AND idMadre = (SELECT idMadre
+		FROM degenti, madri
+		WHERE idFiglio = id AND boh
+
+ESERCIZIO 6
+SELECT FROM
+FROM
+
+
+ESERCIZIO boh
+SELECT DISTINCT m.standaDeg
+FROM degentim , degenti f, madri
+WHERE madri.idMadre = m.id AND madri.idFiglio = f.id AND m.stanzaDeg = f.stanzaDeg
+
+
+///////////
+stanze libere:
+
+SELECT COUNT(DISTINCT d.StanzaDeg) AS "occupate", (COUNT(DISTINCT s.NumStan) - occupate) AS "libere"
+FROM Stanze s LEFT JOIN Degenti d
+ON s.NumStan  =d.StanzaDeg
+

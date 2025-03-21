@@ -48,6 +48,69 @@ HAVING nAuto > 1
 ORDER BY p.nome
 
 /////////////
+ES10
+--La targa delle auto che non sono state coinvolte in sinistri l’anno scorso
+SELECT Targa
+FROM auto
+WHERE Targa NOT IN (
+    SELECT DISTINCT Targa
+    FROM autocinvolte ac
+    JOIN sinistri s ON ac.CodS = s.CodS
+    WHERE year(s.dataIncidente) = year(CURRENT_DATE) - 1
+	--in sqlite --> strftime('%Y', s.DataIncidente) = strftime('%Y', 'now', '-1 year')
+)
+
+--non così perché prende targhe con anni diversi se con più incidenti
+SELECT Targa
+    FROM autocinvolte ac
+    JOIN sinistri s ON ac.CodS = s.CodS
+    WHERE year(s.dataIncidente) != year(CURRENT_DATE) - 1
+
+/////////////
+ES11
+--Il codice dei sinistri in cui non sono state coinvolte auto con cilindrata inferiore a 2000 cc
+SELECT s.CodS
+FROM sinistri s
+WHERE s.CodS NOT IN (
+    SELECT DISTINCT ac.CodS
+    FROM autocinvolte ac
+    JOIN auto a ON ac.Targa = a.Targa
+    WHERE a.Cilindrata < 2000
+)
+
+/////////////
+ES12
+--Il nome dell’Assicurazione che ha gestito più sinistri
+SELECT ass.CodAss, ass.Nome, COUNT(DISTINCT s.CodS) as NumeroSinistri
+FROM ASSICURAZIONI ass, SINISTRI s, AUTOCOINVOLTE ac, AUTO a
+WHERE a.CodAss = ass.CodAss
+AND s.CodS = ac.CodS
+AND ac.Targa = a.Targa
+GROUP BY ass.CodAss, ass.Nome
+HAVING NumeroSinistri = (SELECT COUNT(DISTINCT s.CodS) as NumeroSinistri
+							FROM ASSICURAZIONI ass, SINISTRI s, AUTOCOINVOLTE ac, AUTO a
+							WHERE a.CodAss == ass.CodAss
+							AND s.CodS == ac.CodS
+							AND ac.Targa == a.Targa
+							GROUP BY ass.CodAss, ass.Nome
+							ORDER BY NumeroSinistri DESC
+							LIMIT 1)
+
+
+/////////////
+ES13
+--Crea la tabella PERICOLOSE con le località con più di 5 incidenti, il numero di incidenti, il totale dell’importo dei danni risarciti in ordine decrescente di valore
+CREATE TABLE PERICOLOSE AS
+SELECT s.Località,
+       COUNT(*) AS NumeroIncidenti,
+       SUM(ac.ImportoDelDanno) AS TotaleImportoDanni
+FROM SINISTRI s
+JOIN AUTOCOINVOLTE ac ON s.CodS = ac.CodS
+GROUP BY s.Località
+HAVING COUNT(*) > 5
+ORDER BY TotaleImportoDanni DESC
+
+/////////////
 ES14
 --Elenco delle località che sono o luogo di un sinistro o residenza di un proprietario
 SELECT SINISTRI.Località AS Localita

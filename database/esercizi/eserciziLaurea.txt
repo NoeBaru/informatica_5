@@ -1,0 +1,85 @@
+LAUREA
+
+ES1
+--Il nome e l’anno di nascita degli studenti iscritti a SBC, in ordine rispetto al nome
+SELECT NomeS, AnnoN, CorsoLaurea
+FROM STUDENTI
+WHERE CorsoLaurea == "SBC"
+ORDER BY NomeS
+
+////////////////////////////////////////
+ES2
+--Il nome ed il Dipartimento dei docenti di “Basi di Dati e Sistemi Informativi” o di “Informatica Generale”
+SELECT NomeD, NomeCorso
+FROM DOCENTI d, CORSI c
+WHERE d.CodDocente = c.CodDocente
+AND c.NomeCorso == "Informatica generale" OR c.NomeCorso == "Basi di Dati e Sistemi Informativi"
+
+////////////////////////////////////////
+ES3
+--Matricola e nome degli studenti di un corso di laurea triennale (tipoLaurea = 'L') che seguono un corso di un docente di nome Felice
+SELECT s.Matricola, s.NomeS
+FROM STUDENTI s
+JOIN CORSI c ON s.CorsoLaurea = c.CorsoLaurea
+JOIN DOCENTI d ON c.CodDocente = d.CodDocente
+WHERE d.NomeD = 'Felice'
+  AND c.TipoLaurea = 'L';
+
+////////////////////////////////////////
+ES1 PER LEFT JOIN
+--Tutti i docenti e gli studenti appartenenti al dipartimento di informatica
+SELECT NomeD
+FROM docenti
+WHERE Dipartimento LIKE AS "%Informatica%"
+
+UNION
+
+SELECT studenti
+FROM
+WHERE
+
+////////////////////////////////////////
+ES2 PER LEFT JOIN
+--I nomi dei docenti del dipartimento di informatica che non sono anche nomi di docenti del dipartimento di lettere
+SELECT dI.nome
+FROM docenti dI
+LEFT JOIN docenti dL
+ON dL.nome = dI.nome
+WHERE dL.dipartimento = "Lettere"
+AND dI.dipartimento = "Informatica"
+AND dI.nome is NULL
+
+fosse sia info che lettere
+
+SELECT dI.nome
+FROM docenti dI
+JOIN docenti dL
+ON dL.nome = dI.nome
+WHERE dL.dipartimento = "Lettere"
+AND dI.dipartimento = "Informatica"
+
+////////////////////////////////////////
+ES3 PER LEFT JOIN
+--i nomi comuni tra prof di info e lettere
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

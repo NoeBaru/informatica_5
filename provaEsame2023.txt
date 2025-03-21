@@ -1,0 +1,111 @@
+1. Analisi della realtà di riferimento e schema concettuale:
+
+La piattaforma web è pensata per permettere a docenti e studenti di interagire con educational games.
+Le entità principali sono:
+
+Utente (può essere docente o studente)
+Classe virtuale (associata a un docente e a una materia)
+Videogioco (catalogato per argomento)
+Partecipazione (gli studenti si iscrivono alle classi)
+Monete raccolte (indicano i progressi dello studente)
+
+
+Lo schema concettuale (modello E-R):
+
+Un docente può creare più classi virtuali.
+Una classe virtuale può includere più videogiochi.
+Gli studenti si iscrivono a una o più classi virtuali.
+Gli studenti giocano ai videogiochi proposti nella classe e guadagnano monete.
+
+2. Schema logico:
+
+CREATE TABLE utente (
+    idUtente INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50),
+    cognome VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255),
+    ruolo ENUM('docente', 'studente') NOT NULL
+);
+
+CREATE TABLE classeVirtuale (
+    idClasse INT PRIMARY KEY AUTO_INCREMENT,
+    nomeClasse VARCHAR(50),
+    materia VARCHAR(50),
+    docenteId INT,
+    FOREIGN KEY (docenteId) REFERENCES utente(idUtente) ON DELETE CASCADE
+);
+
+CREATE TABLE videogioco (
+    idGioco INT PRIMARY KEY AUTO_INCREMENT,
+    titolo VARCHAR(100),
+    descrizioneBreve VARCHAR(160),
+    descrizioneEstesa TEXT,
+    argomento VARCHAR(50),
+    moneteMax INT
+);
+
+CREATE TABLE classeVideogioco (
+    idClasse INT,
+    idGioco INT,
+    PRIMARY KEY (idClasse, idGioco),
+    FOREIGN KEY (idClasse) REFERENCES classeVirtuale(idClasse) ON DELETE CASCADE,
+    FOREIGN KEY (idGioco) REFERENCES videogioco(idGioco) ON DELETE CASCADE
+);
+
+CREATE TABLE partecipazione (
+    studenteId INT,
+    classeId INT,
+    PRIMARY KEY (studenteId, classeId),
+    FOREIGN KEY (studenteId) REFERENCES utente(idUtente) ON DELETE CASCADE,
+    FOREIGN KEY (classeId) REFERENCES classeVirtuale(idClasse) ON DELETE CASCADE
+);
+
+CREATE TABLE moneteRaccolte (
+    studenteId INT,
+    giocoId INT,
+    classeId INT,
+    monete INT,
+    PRIMARY KEY (studenteId, giocoId, classeId),
+    FOREIGN KEY (studenteId) REFERENCES utente(idUtente) ON DELETE CASCADE,
+    FOREIGN KEY (giocoId) REFERENCES videogioco(idGioco) ON DELETE CASCADE,
+    FOREIGN KEY (classeId) REFERENCES classeVirtuale(idClasse) ON DELETE CASCADE
+);
+
+3. Query SQL:
+
+-- a) Elenco giochi di un certo argomento, ordinati alfabeticamente
+SELECT titolo 
+FROM videogioco 
+WHERE argomento = 'triangoli' 
+ORDER BY titolo;
+
+-- b) Classifica degli studenti in una classe virtuale per un certo gioco
+SELECT u.nome, u.cognome, mr.monete
+FROM moneteRaccolte mr
+JOIN utente u ON mr.studenteId = u.idUtente
+WHERE mr.classeId = 1 AND mr.giocoId = 2
+ORDER BY mr.monete DESC;
+
+-- c) Numero di classi in cui è utilizzato ciascun videogioco
+SELECT v.titolo, COUNT(cv.idClasse) AS numeroClassi
+FROM videogioco v
+JOIN classeVideogioco cv ON v.idGioco = cv.idGioco
+GROUP BY v.titolo;
+
+
+4. Struttura dell’applicazione web:
+
+L’applicazione sarà basata su un’architettura client-server, con:
+
+Frontend: sviluppato in HTML, CSS, JavaScript (React.js o Vue.js).
+Backend: basato su PHP, Python (Flask/Django) o Node.js (Express.js).
+Database: MySQL o PostgreSQL.
+Funzionalità principali:
+
+Registrazione/Login utenti
+Creazione classi da parte dei docenti
+Iscrizione alle classi da parte degli studenti
+Assegnazione e fruizione dei videogiochi
+Monitoraggio progressi tramite monete raccolte
+Classifiche e report per il docente

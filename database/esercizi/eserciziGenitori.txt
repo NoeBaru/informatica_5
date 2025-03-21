@@ -1,0 +1,33 @@
+ESERCIZIO 6
+
+///////////////////
+ES1
+--Restituire codice fiscale, nome, cognome, e sesso delle persone con età superiore ai 30 anni.
+YEAR(CURRENT_DATE - YEAR(natoIl) > 30
+///////////////////
+ES2
+--Restituire l'indirizzo di tutte le donne.
+
+///////////////////
+ES3
+--Calcolare l’età media dei maschi e delle femmine (rispetto a quest’anno)
+
+///////////////////
+ES4
+--trovare l'elenco delle persone (indicandone il nome e cognome) che abitano in via Roma, ma
+non in via Roma a Torino.
+
+///////////////////
+ES5
+--Trovare l'indirizzo del padre della persona con codice fiscale BNOVVN68B69B55D.
+SELECT r.via, r.NumCiv, r.CAP, r.citta
+FROM residenza r, genitori g, persone p
+WHERE r.codR = p.codRes
+AND p.codGenitore = p.codiceFiscale
+AND p.sesso = "M"
+AND p.codFiglio = "BNOVVN68B69B55D"
+(non penso sia giusta, ma ci ho provato)
+
+///////////////////
+ES6
+--Trovare i figli maschi (indicandone il codice fiscale e il nome) di Luca Bianchi.
