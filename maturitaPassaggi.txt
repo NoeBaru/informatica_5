@@ -1,0 +1,55 @@
+ANALISI DEI REQUISITI:
+Requisiti funzionali:
+Prendo il testo della maturità e lo scompongo in punti (questo serve a giustificare le azioni dopo), in maiusc le operazioni CRUD
+
+Requisiti non funzionali:
+- Responsive web design: le pagine web dovranno adattarsi in modo automatico alla grandezza dello schermo per pc, tablet, smartphone.
+- Durata Sessione: per ragioni di sicurezza da durata della sessione non dovrà durare più di 10 minuti
+- Convalida dei dati lato client: i dati richiesti e la tipologia di determinate informazioni (campi obbligatori, email) dovranno essere validati lato client utilizzando i controlli HTML5
+  (o Javascript)
+- Sicurezza
+
+PROGETTAZIONE:
+- cosa uso per farlo (definizioni varie di mysql, apache, php, SQLite)
+- struttura del database (tabelle, mapping e create)
+- struttura del file system (come organizzo cartelle e file):
+	- db config con istruzioni dentro a memoria
+	- inserimento
+	- visualizzazione
+	- form
+	- HTML: pezzo iniziale dei metadati, form e collegamenti vari, action method
+
+
+cartella
+-templates (codice html)
+	-header
+	-main
+	-menuSx
+	-footer
+-css
+	-style.css
+-php
+	-header
+	-logincheck (prepare prepara la query e il '?' indica la variabile che prende, il bind_param() casta tutti i valri del form e potrebbe essere codice malefico della sql injection (OR 			1 = 1) casta la stringa togliendo il potere logico del '=' (pulire i dati eventualmente malevoli messi dall'utente) una 's' per valore sopra con '?', excecute 					esegue. get_result() da il risultato della query, row una sola riga e uso  fetch_assoc(), altrimenti rows con fetch_all(MYSQLI_ASSOC) per più righe e uso foreach.
+			se uso quello multirighe per cercare un utente o qualcosa conviene usare quello mono, sennò si fa prima con l'altro
+	-registra_utente.php (fa insert
+	-header_riservata (uso una if con isset($_SESSION['login']) se è stata creata vuol dire che ha fatto il login, sennò no)
+-conf
+	-dbConfig (connessione al database) mysqli (per db mysql, la i sta per innovation, per il prepare statement) e pdo (tipo di connessione che va ad interagire con più tipi di db)
+			(sarebbe pericoloso mettere questo codice in ogni pagina, quindi file a parte che viene incluso quando voglio fare le query)
+			(conn è l'oggetto che andiamo a chiamare quando facciamo la prepare) il PDO (da imparare a memoria è difficile, meno performante, ma se viene specificato che deve
+			essere multi database)
+	
+html vari (parti di visualizzazione con html)
+home.php
+index.php (action dove mando i dati, method può essere GET (si vede nell'URL) o POST)
+	manda i dati in POST al loginCheck
+registrazione_from.php
+
+
+sessione:
+quando scade o si fa il logout o boh: si torna al login
+mantiene la sessione con web server e browser, se cambio pagin rimane, se cambio browser no
+
+La sessione parte dal 'logincheck': session_start() se la sessione è presente la apro, sennò la creo isset per vedere se è attiva la sessione
+
